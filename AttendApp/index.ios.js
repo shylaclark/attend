@@ -17,7 +17,6 @@ export default class AttendApp extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          AARS{'\n'}
           Welcome to React Native!
         </Text>
         <Text style={styles.instructions}>
