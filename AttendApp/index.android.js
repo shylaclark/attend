@@ -12,22 +12,15 @@ import {
   View
 } from 'react-native';
 
+import LoginScreen from "./screens/login/index";
+
 export default class AttendApp extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
+      return (
+          <View style={styles.container}>
+            <LoginScreen />
+          </View>
+      );
   }
 }
 
@@ -39,7 +32,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   welcome: {
-    fontSize: 20,
+    fontSize: 70,
     textAlign: 'center',
     margin: 10,
   },
