@@ -6,7 +6,8 @@ import {
     View,
     Image,
     TextInput,
-    TouchableOpacity
+    TouchableOpacity,
+    Picker
 } from 'react-native'
 
 const background = require("./login1_bg.png");
@@ -16,6 +17,7 @@ const lockIcon = require("./signup_lock.png");
 const emailIcon = require("./signup_email.png");
 
 export default class SignupView extends Component {
+
     render() {
         return (
             <View style={styles.container}>
@@ -91,6 +93,8 @@ export default class SignupView extends Component {
                             />
                         </View>
 
+
+
                         <View style={styles.inputContainer}>
                             <View style={styles.iconContainer}>
                                 <Image
@@ -134,8 +138,8 @@ export default class SignupView extends Component {
                         </TouchableOpacity>
 
                         <TouchableOpacity>
-                            <View style={styles.signin}>
-                                <Text style={styles.greyFont}>Already have an account?<Text style={styles.whiteFont}> Sign In</Text></Text>
+                            <View style={styles.login}>
+                                <Text style={styles.greyFont}>Already have an account?<Text style={styles.whiteFont}> Login</Text></Text>
                             </View>
                         </TouchableOpacity>
                     </View>
@@ -216,7 +220,7 @@ let styles = StyleSheet.create({
         marginTop: 10,
         marginBottom: 10,
     },
-    signin: {
+    login: {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'transparent',
