@@ -117,7 +117,7 @@ export default class SignupView extends Component {
                             <TextInput
                                 secureTextEntry={true}
                                 style={[styles.input, styles.whiteFont]}
-                                placeholder="Password"
+                                placeholder="Confirm"
                                 placeholderTextColor="#FFF"
                             />
                         </View>
@@ -129,7 +129,7 @@ export default class SignupView extends Component {
 
                         <TouchableOpacity>
                             <View style={styles.signup}>
-                                <Text style={styles.whiteFont}>Join</Text>
+                                <Text style={styles.blackFont}>Join</Text>
                             </View>
                         </TouchableOpacity>
 
@@ -169,17 +169,17 @@ let styles = StyleSheet.create({
         backgroundColor: 'transparent'
     },
     headerBackButtonView: {
-        width: 25,
-        height: 25,
+        width: 20,
+        height: 20,
     },
     backButtonIcon: {
         width: 25,
-        height: 25
+        height: 25,
     },
     headerTitleView: {
         backgroundColor: 'transparent',
-        marginTop: 25,
-        marginLeft: 25,
+        marginTop: 20,
+        marginLeft: 20,
     },
     titleViewText: {
         fontSize: 40,
@@ -193,7 +193,7 @@ let styles = StyleSheet.create({
         borderBottomColor: '#CCC',
         borderColor: 'transparent',
         flexDirection: 'row',
-        height: 75,
+        height: 50,
     },
     iconContainer: {
         paddingHorizontal: 15,
@@ -201,19 +201,20 @@ let styles = StyleSheet.create({
         alignItems: 'center',
     },
     inputIcon: {
-        width: 30,
-        height: 30,
+        width: 20,
+        height: 20,
     },
     input: {
         flex: 1,
-        fontSize: 20,
+        paddingHorizontal: 10,
     },
     signup: {
-        backgroundColor: '#FF3366',
-        paddingVertical: 25,
+        backgroundColor: '#FFF',
+        paddingVertical: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: 15,
+        marginTop: 10,
+        marginBottom: 10,
     },
     signin: {
         justifyContent: 'center',
@@ -222,6 +223,9 @@ let styles = StyleSheet.create({
     },
     greyFont: {
         color: '#D8D8D8'
+    },
+    blackFont: {
+        color: '#000'
     },
     whiteFont: {
         color: '#FFF'
