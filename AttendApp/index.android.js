@@ -1,8 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+
 
 import React, { Component } from 'react';
 import {
@@ -13,6 +9,7 @@ import {
 } from 'react-native';
 
 import LoginScreen from "./screens/login/index";
+import SignupScreen from "./screens/signup/index";
 
 export default class AttendApp extends Component {
   render() {
@@ -29,7 +26,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#000000',
   },
   welcome: {
     fontSize: 70,
