@@ -10,15 +10,17 @@ import {
     Picker
 } from 'react-native'
 
-const background = require("./login1_bg.png");
-const backIcon = require("./back.png");
-const personIcon = require("./signup_person.png");
-const lockIcon = require("./signup_lock.png");
-const emailIcon = require("./signup_email.png");
+const background = require("../img/background.png");
+const backIcon = require("../img/back.png");
+const personIcon = require("../img/person.png");
+const lockIcon = require("../img/lock.png");
+const emailIcon = require("../img/email.png");
 
-export default class SignupView extends Component {
+export default class SignupScreen extends Component {
 
     render() {
+        const {navigate} = this.props.navigation;
+
         return (
             <View style={styles.container}>
                 <Image
@@ -27,25 +29,12 @@ export default class SignupView extends Component {
                     resizeMode="cover"
                 >
                     <View style={styles.headerContainer}>
-
-                        <View style={styles.headerIconView}>
-                            <TouchableOpacity style={styles.headerBackButtonView}>
-                                <Image
-                                    source={backIcon}
-                                    style={styles.backButtonIcon}
-                                    resizeMode="contain"
-                                />
-                            </TouchableOpacity>
-                        </View>
-
                         <View style={styles.headerTitleView}>
                             <Text style={styles.titleViewText}>Sign Up</Text>
                         </View>
-
                     </View>
 
                     <View style={styles.inputsContainer}>
-
                         <View style={styles.inputContainer}>
                             <View style={styles.iconContainer}>
                                 <Image
@@ -93,8 +82,6 @@ export default class SignupView extends Component {
                             />
                         </View>
 
-
-
                         <View style={styles.inputContainer}>
                             <View style={styles.iconContainer}>
                                 <Image
@@ -126,20 +113,19 @@ export default class SignupView extends Component {
                             />
                         </View>
 
-
                     </View>
 
                     <View style={styles.footerContainer}>
 
                         <TouchableOpacity>
                             <View style={styles.signup}>
-                                <Text style={styles.blackFont}>Join</Text>
+                                <Text style={styles.blackFont}>Sign Up</Text>
                             </View>
                         </TouchableOpacity>
 
                         <TouchableOpacity>
                             <View style={styles.login}>
-                                <Text style={styles.greyFont}>Already have an account?<Text style={styles.whiteFont}> Login</Text></Text>
+                                <Text style={styles.greyFont}>Already have an account?<Text style={styles.whiteFont} onPress={ ()=> navigate('Login') }> Log In</Text></Text>
                             </View>
                         </TouchableOpacity>
                     </View>
@@ -234,4 +220,4 @@ let styles = StyleSheet.create({
     whiteFont: {
         color: '#FFF'
     }
-})
+});

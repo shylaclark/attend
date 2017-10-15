@@ -1,0 +1,118 @@
+To run app on iOS:
+cd ../aars/AttendApp
+react-native run-ios
+
+
+To run app on Android:
+
+Start emulator in Android Studio.
+
+react-native run-android
+
+To switch to Dev branch:
+git checkout Dev
+
+To push to repo:
+git add *
+git commit -m “msg”
+git push origin Dev
+
+
+heroku
+https://devcenter.heroku.com/articles/heroku-cli
+
+
+front end: react-native
+back end: node.js (could use rails)
+
+
+sequel pro
+https://sequelpro.com/download
+
+bitrise for ci
+https://pillow.codes/bitrise-codepush-react-native-ideal-mobile-ci-setup-6283b86146c
+
+
+notes:
+* can’t use java 9
+* android studio won’t recognize android package as long as .idea file visible
+
+
+********
+MIDTERM
+********
+
+1. How many sprints complete? 
+	2 
+   Sprint length? 
+	2 weeks
+
+2. What features have been implemented? 
+	login view
+	registration view
+
+3. What features need to be implemented? 
+	database
+	bluetooth
+	finish UI
+	generate pdf?
+
+4. Tools:
+	Communication:	Slack
+	Agile:	 	CA Agile (Rally)
+	VCS:		GitHub
+	CI:		Jenkins Blue Ocean
+	IDE:		WebStorm (JavaScript)
+			Xcode (iOS)
+			Android Studio (Android)
+	Framework:	react-native
+			node.js
+	Database:	PostgreSQL
+	Testing:	Jest
+
+
+	Why React Native? Can reuse UI components, Javascript code, and test suites between iOS and Android.
+	
+
+************
+GIT WORKFLOW
+************
+
+Every feature branch is a user story number.
+
+Create feature branch on GitHub.com.
+
+e.g.
+
+git checkout -b US13/login
+…
+git push origin US13/login
+
+**********
+TO DO 10/5
+**********
+
+update/edit user stories: everyone
+dropdown menu: Amanda
+
+Jenkins blue ocean: Shyla
+connect pages: Suraj, Shyla
+connect database: Sathvik, August
+
+
+***********
+TO DO 10/12
+***********
+
+update/edit user stories: everyone
+dropdown menu: Amanda
+
+Jenkins blue ocean: Shyla
+connect pages: Suraj, Shyla
+connect database: Sathvik, August
+change logo to Attend or something: ??
+
+
+since last meeting: made some changes to project file structure, working on connecting components
+
+until next meeting: update my user stories, set up Jenkins Blue Ocean, still working on connecting components
