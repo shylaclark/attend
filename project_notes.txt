@@ -112,11 +112,6 @@ connect pages: Suraj, Shyla
 connect database: Sathvik, August
 change logo to Attend or something: ??
 
-
-since last meeting: made some changes to project file structure, working on connecting components
-
-until next meeting: update my user stories, set up Jenkins Blue Ocean, still working on connecting components
-
 **********
 BLUE OCEAN
 **********
@@ -124,11 +119,7 @@ https://jenkins.io/doc/book/blueocean/getting-started/#blueocean-docker
 
 Jenkins Blue Ocean
 1. Install Docker (stable)
-2. docker run -p 8888:8080 jenkinsci/blueocean:latest
+2. On command line,
+    docker run -p 8888:8080 jenkinsci/blueocean:latest
+    Will give you a password.
 3. In web browser, type localhost:8888/blue into url bar.
-5c900dc91ad34abc8f4b29f6a3fcaa58
-
-GitHub
-
-
-git add file.name && git commit -m "removed merge conflicts"

@@ -1,30 +1,32 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
   Image,
   Dimensions,
   TextInput,
-  Button,
   TouchableOpacity
 } from 'react-native';
 
 const { width, height } = Dimensions.get("window");
 
-const background = require("./login1_bg.png");
-const mark = require("./login1_mark.png");
-const lockIcon = require("./login1_lock.png");
-const personIcon = require("./login1_person.png");
+const background = require("../img/background.png");
+const logo = require("../img/logo.png");
+const lockIcon = require("../img/lock.png");
+const personIcon = require("../img/person.png");
 
 export default class LoginScreen extends Component {
+
   render() {
+
+    const {navigate} = this.props.navigation;
+
     return (
       <View style={styles.container}>
         <Image source={background} style={styles.background} resizeMode="cover">
-          <View style={styles.markWrap}>
-            <Image source={mark} style={styles.mark} resizeMode="contain" />
+          <View style={styles.logoWrap}>
+            <Image source={logo} style={styles.logo} resizeMode="contain" />
           </View>
           <View style={styles.wrapper}>
             <View style={styles.inputWrap}>
@@ -55,7 +57,7 @@ export default class LoginScreen extends Component {
             </TouchableOpacity>
             <TouchableOpacity activeOpacity={.5}>
               <View style={styles.button}>
-                <Text style={styles.buttonText}>Login</Text>
+                <Text style={styles.buttonText}>Log In</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -63,8 +65,8 @@ export default class LoginScreen extends Component {
             <View style={styles.signupWrap}>
 
               <TouchableOpacity activeOpacity={.5}>
-                <View>
-                  <Text style={styles.signupLinkText}>Register</Text>
+                <View style={styles.signup}>
+                  <Text style={styles.whiteFont} onPress={ ()=> navigate('Signup') }> Sign Up for AttendApp</Text>
                 </View>
               </TouchableOpacity>
             </View>
@@ -78,12 +80,13 @@ export default class LoginScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#000',
   },
-  markWrap: {
+  logoWrap: {
     flex: 1,
     paddingVertical: 30,
   },
-  mark: {
+  logo: {
     width: null,
     height: null,
     flex: 1,
@@ -114,6 +117,8 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     paddingHorizontal: 10,
+    color: "#FFF",
+
   },
   button: {
     backgroundColor: "#FFF",
@@ -141,8 +146,19 @@ const styles = StyleSheet.create({
   accountText: {
     color: "#D8D8D8"
   },
-  signupLinkText: {
-    color: "#FFF",
-    marginLeft: 5,
-  }
+    signup: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'transparent',
+    },
+    greyFont: {
+        color: '#D8D8D8'
+    },
+    blackFont: {
+        color: '#000'
+    },
+    whiteFont: {
+        color: '#FFF'
+    }
 });
+
