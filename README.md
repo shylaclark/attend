@@ -2,17 +2,22 @@
 
 Cross-platform mobile application for automatically recording student attendance.
 
-Course: CSCI 6363 - Agile Software Engineering
-Term: Fall 2017
-Instructor: Dr. Minhaz Zibran
+## Course
 
-## Production Tools
+* Course: Agile Software Engineering (CSCI 6363)
+* Career: Graduate
+* Term: Fall 2017
+* Instructor: Dr. Minhaz Zibran
+
+## Tools
+
+### Agile Development
 
 * Agile Planning: CA Agile (Rally)
 * Continuous Integration: Jenkins Blue Ocean
 * Unit Testing: Jest
 
-## Development Tools
+### Software Development
 
 * UI Framework: React Native
 * Languages: JavaScript
@@ -24,7 +29,7 @@ Instructor: Dr. Minhaz Zibran
 + [@shylaclark](http://github.com/shylaclark)
 + [@sggattan](http://github.com/sggattan)
 + [@alschmi2](http://github.com/alschmi2)
-+ [@crypto](hhttps://github.com/crypteaux)
++ [@crypteaux](http://github.com/crypteaux)
 + [@psathvik1118](https://github.com/psathvik1118)
 
 
