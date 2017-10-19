@@ -2,6 +2,7 @@
 
 Cross-platform mobile application for automatically recording student attendance.
 
+
 ## Getting Started
 
 [Install React Native and its dependencies.](https://facebook.github.io/react-native/docs/getting-started.html) Follow directions under 'Building Projects with Native Code' tab.
@@ -15,12 +16,14 @@ Cross-platform mobile application for automatically recording student attendance
 2. cd to project root.
 3. `react-native run-android`
 
+
 ## Course
 
 * Course: Agile Software Engineering (CSCI 6363)
 * Career: Graduate
 * Term: Fall 2017
 * Instructor: Dr. Minhaz Zibran
+
 
 ## Tools
 
@@ -36,6 +39,7 @@ Cross-platform mobile application for automatically recording student attendance
 * Languages: JavaScript
 * IDE: WebStorm
 * Emulators: Android Studio (Android), Xcode (iOS)
+
 
 ## Authors
 
