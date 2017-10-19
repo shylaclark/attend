@@ -28,20 +28,16 @@ Cross-platform mobile application for automatically recording student attendance
 
 ## Getting Started
 
-### Requirements
+[Install React Native and its dependencies](https://facebook.github.io/react-native/docs/getting-started.html)following the directions under Building Projects with Native Code tab.
 
-[![NPM](https://www.npmjs.com/package/react-native)](https://www.npmjs.com/package/react-native)
+### iOS
+1. cd to root
+2. `react-native run-ios`
 
-#### iOS
-* Install [Xcode](https://developer.apple.com/xcode/). 
-* cd to root and run 'react-native run-ios'.
-* Xcode will automatically start the iPhone emulator.
-
-#### Android
-* Install [Android Studio](https://developer.android.com/studio/index.html).
-* In Android Studio, open Android Virtual Device Manager and create a new device.
-* Start device.
-* cd to root and run 'react-native run-android'.
+### Android
+1. Open AVD Manager in Android Studio and select green arrow to launch AVD.
+2. cd to project root
+3. `react-native run-android`
 
 ## Authors
 
