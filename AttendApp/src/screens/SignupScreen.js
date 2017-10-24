@@ -7,8 +7,10 @@ import {
     Image,
     TextInput,
     TouchableOpacity,
-    Picker
+    Picker,
+    TouchableWithoutFeedback
 } from 'react-native'
+import ModalDropdown from 'react-native-modal-dropdown';
 
 const background = require("../img/background.png");
 const backIcon = require("../img/back.png");
@@ -65,6 +67,39 @@ export default class SignupScreen extends Component {
                                 placeholderTextColor="#FFF"
                                 underlineColorAndroid='transparent'
                             />
+                        </View>
+
+                        <View style={styles.inputContainer}>
+                            <View style={styles.iconContainer}>
+                                <Image
+                                    source={personIcon}
+                                    style={styles.inputIcon}
+                                    resizeMode="contain"
+                                />
+                            </View>
+                            <ModalDropdown
+                                options={['Instructor', 'Student']}
+                                style={[{
+                                    backgroundColor:'transparent',
+                                    flex: 3,
+                                    justifyContent: 'center',
+                                    marginLeft: 10,
+                                }]}
+                                textStyle={styles.dropdownText}
+                                dropdownStyle={[{
+                                    paddingTop: 5,
+                                    backgroundColor: 'transparent',
+                                    borderBottomColor: '#CCC',
+                                    borderColor: '#000',
+                                    width: 200,
+                                    overflow: 'scroll'
+
+                                }]}
+                                dropdownTextHighlightStyle={{fontWeight: 'bold'}}
+                                dropdownTextStyle={[{color: 'black', justifyContent: 'center', fontSize: 15}]}
+                                defaultValue={"Status"}
+                            />
+cd
                         </View>
 
                         <View style={styles.inputContainer}>
@@ -131,9 +166,11 @@ export default class SignupScreen extends Component {
                     </View>
                 </Image>
             </View>
-        );
+        )
     }
 }
+
+
 
 let styles = StyleSheet.create({
     container: {
@@ -175,6 +212,10 @@ let styles = StyleSheet.create({
         fontSize: 40,
         color: '#fff',
     },
+    dropdownText: {
+        fontSize: 17,
+        color: '#fff',
+    },
     inputs: {
         paddingVertical: 20,
     },
@@ -185,6 +226,7 @@ let styles = StyleSheet.create({
         flexDirection: 'row',
         height: 50,
     },
+
     iconContainer: {
         paddingHorizontal: 15,
         justifyContent: 'center',
