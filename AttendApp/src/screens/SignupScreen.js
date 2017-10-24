@@ -7,8 +7,6 @@ import {
     Image,
     TextInput,
     TouchableOpacity,
-    Picker,
-    TouchableWithoutFeedback
 } from 'react-native'
 import ModalDropdown from 'react-native-modal-dropdown';
 
