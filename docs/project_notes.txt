@@ -1,14 +1,3 @@
-To run app on iOS:
-cd ../aars/AttendApp
-react-native run-ios
-
-
-To run app on Android:
-
-Start emulator in Android Studio.
-
-react-native run-android
-
 To switch to Dev branch:
 git checkout Dev
 
