@@ -95,7 +95,7 @@ export default class SignupScreen extends Component {
                                 }]}
                                 dropdownTextHighlightStyle={{fontWeight: 'bold'}}
                                 dropdownTextStyle={[{color: 'black', justifyContent: 'center', fontSize: 15}]}
-                                defaultValue={"Role"}
+                                defaultValue={"Status"}
                             />
 
                         </View>
@@ -145,7 +145,6 @@ export default class SignupScreen extends Component {
                                 placeholderTextColor="#FFF"
                             />
                         </View>
-
                     </View>
 
                     <View style={styles.footerContainer}>
