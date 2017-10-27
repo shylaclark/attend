@@ -112,3 +112,13 @@ Jenkins Blue Ocean
     docker run -p 8888:8080 jenkinsci/blueocean:latest
     Will give you a password.
 3. In web browser, type localhost:8888/blue into url bar.
+
+
+************
+Final Presentation Notes
+************
+
+1. Everyone must present.
+2. Demo application: iOS and Android
+3. Sell your product to buyers.
+4. Testing/code quality results.
