@@ -99,7 +99,6 @@ export default class SignupScreen extends Component {
                                 dropdownTextStyle={[{color: 'black', justifyContent: 'center', fontSize: 15}]}
                                 defaultValue={"Status"}
                             />
-cd
                         </View>
 
                         <View style={styles.inputContainer}>
