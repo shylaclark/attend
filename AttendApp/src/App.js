@@ -7,10 +7,13 @@ import {StackNavigator} from 'react-navigation';
 import SignupScreen from "./screens/SignupScreen";
 import LoginScreen from "./screens/LoginScreen";
 import CreateCourse from "./screens/CourseScreen";
+import CourseList from "./screens/CourseL";
+
 
 const AttendApp = StackNavigator({
     Login: {screen: LoginScreen},
     Signup: {screen: SignupScreen},
+    CList: {screen: CourseList},
     Create: {screen: CreateCourse}
 });
 
