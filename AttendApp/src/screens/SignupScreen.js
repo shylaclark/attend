@@ -7,8 +7,8 @@ import {
     Image,
     TextInput,
     TouchableOpacity,
+    Picker
 } from 'react-native'
-import ModalDropdown from 'react-native-modal-dropdown';
 
 const background = require("../img/background.png");
 const backIcon = require("../img/back.png");
@@ -16,7 +16,58 @@ const personIcon = require("../img/person.png");
 const lockIcon = require("../img/lock.png");
 const emailIcon = require("../img/email.png");
 
+const Realm = require('realm');
+
 export default class SignupScreen extends Component {
+
+    state = {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+    }
+
+    updateFormField = fieldName => text => {
+        this.setState({ [fieldName]: text })
+    }
+
+    createAccount = () => {
+        const { firstName, lastName, email, password, confirmPassword } = this.state
+        console.log('firstName', firstName);
+        console.log('lastName', lastName);
+        console.log('email', email);
+        console.log('password', password);
+        console.log('confirmPassword', confirmPassword);
+
+        Realm.open({
+            schema: [
+                {
+                    name: 'User',
+                    properties: {
+                        firstName: 'string',
+                        lastName: 'string',
+                        email: 'string',
+                        password: 'string'
+                    }
+                }
+            ]
+        }).then(realm => {
+            realm.write(() => {
+                realm.create('User',
+                    {
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email,
+                        password: password
+                    }
+                );
+            });
+
+            const users = realm.objects('User');
+            console.log('users', users);
+        });
+    };
 
     render() {
         const {navigate} = this.props.navigation;
@@ -44,6 +95,7 @@ export default class SignupScreen extends Component {
                                 />
                             </View>
                             <TextInput
+                                onChangeText={this.updateFormField('firstName')}
                                 style={[styles.input, styles.whiteFont]}
                                 placeholder="First Name"
                                 placeholderTextColor="#FFF"
@@ -60,44 +112,12 @@ export default class SignupScreen extends Component {
                                 />
                             </View>
                             <TextInput
+                                onChangeText={this.updateFormField('lastName')}
                                 style={[styles.input, styles.whiteFont]}
                                 placeholder="Last Name"
                                 placeholderTextColor="#FFF"
                                 underlineColorAndroid='transparent'
                             />
-                        </View>
-
-                        <View style={styles.inputContainer}>
-                            <View style={styles.iconContainer}>
-                                <Image
-                                    source={personIcon}
-                                    style={styles.inputIcon}
-                                    resizeMode="contain"
-                                />
-                            </View>
-                            <ModalDropdown
-                                options={['Instructor', 'Student']}
-                                style={[{
-                                    backgroundColor:'transparent',
-                                    flex: 3,
-                                    justifyContent: 'center',
-                                    marginLeft: 10,
-                                }]}
-                                textStyle={styles.dropdownText}
-                                dropdownStyle={[{
-                                    paddingTop: 5,
-                                    backgroundColor: 'transparent',
-                                    borderBottomColor: '#CCC',
-                                    borderColor: '#000',
-                                    width: 200,
-                                    overflow: 'scroll'
-
-                                }]}
-                                dropdownTextHighlightStyle={{fontWeight: 'bold'}}
-                                dropdownTextStyle={[{color: 'black', justifyContent: 'center', fontSize: 15}]}
-                                defaultValue={"Role"}
-                            />
-
                         </View>
 
                         <View style={styles.inputContainer}>
@@ -109,6 +129,7 @@ export default class SignupScreen extends Component {
                                 />
                             </View>
                             <TextInput
+                                onChangeText={this.updateFormField('email')}
                                 style={[styles.input, styles.whiteFont]}
                                 placeholder="UNO Email"
                                 placeholderTextColor="#FFF"
@@ -124,6 +145,7 @@ export default class SignupScreen extends Component {
                                 />
                             </View>
                             <TextInput
+                                onChangeText={this.updateFormField('password')}
                                 secureTextEntry={true}
                                 style={[styles.input, styles.whiteFont]}
                                 placeholder="Password"
@@ -139,6 +161,7 @@ export default class SignupScreen extends Component {
                                 />
                             </View>
                             <TextInput
+                                onChangeText={this.updateFormField('confirmPassword')}
                                 secureTextEntry={true}
                                 style={[styles.input, styles.whiteFont]}
                                 placeholder="Confirm"
@@ -150,7 +173,7 @@ export default class SignupScreen extends Component {
 
                     <View style={styles.footerContainer}>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={ () => this.createAccount() }>
                             <View style={styles.signup}>
                                 <Text style={styles.blackFont}>Sign Up</Text>
                             </View>
@@ -164,11 +187,9 @@ export default class SignupScreen extends Component {
                     </View>
                 </Image>
             </View>
-        )
+        );
     }
 }
-
-
 
 let styles = StyleSheet.create({
     container: {
@@ -210,10 +231,6 @@ let styles = StyleSheet.create({
         fontSize: 40,
         color: '#fff',
     },
-    dropdownText: {
-        fontSize: 17,
-        color: '#fff',
-    },
     inputs: {
         paddingVertical: 20,
     },
@@ -224,7 +241,6 @@ let styles = StyleSheet.create({
         flexDirection: 'row',
         height: 50,
     },
-
     iconContainer: {
         paddingHorizontal: 15,
         justifyContent: 'center',

@@ -7,9 +7,19 @@ Cross-platform mobile application for automatically recording student attendance
 
 [Install React Native and its dependencies.](https://facebook.github.io/react-native/docs/getting-started.html) Follow directions under 'Building Projects with Native Code' tab.
 
+
+## REALM Database Installation
+In command line, install Realm inside of AttendApp directory: 'npm install --save realm'
+
+Link Realm for Android and iOS: 'react-native link realm'
+
+If you had the app running, you may need to run 'watchman watch-del-all' and 'npm cache clean'
+
+Shut down and restart Xcode and Simulator where open.
+
 ### iOS
 1. cd to project root.
-2. `react-native run-ios`
+2. `react-native run-ios'
 
 ### Android
 1. Open AVD Manager in Android Studio and select green arrow to launch AVD.
