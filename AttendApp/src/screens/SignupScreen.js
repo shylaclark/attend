@@ -15,6 +15,7 @@ const backIcon = require("../img/back.png");
 const personIcon = require("../img/person.png");
 const lockIcon = require("../img/lock.png");
 const emailIcon = require("../img/email.png");
+const wifiIcon = require("../img/mac_address.png");
 
 const Realm = require('realm');
 
@@ -25,6 +26,7 @@ export default class SignupScreen extends Component {
         lastName: '',
         email: '',
         password: '',
+        macAddress: '',
         confirmPassword: ''
     }
 
@@ -33,10 +35,11 @@ export default class SignupScreen extends Component {
     }
 
     createAccount = () => {
-        const { firstName, lastName, email, password, confirmPassword } = this.state
+        const { firstName, lastName, email, macAddress, password, confirmPassword } = this.state
         console.log('firstName', firstName);
         console.log('lastName', lastName);
         console.log('email', email);
+        console.log('macAddress', macAddress);
         console.log('password', password);
         console.log('confirmPassword', confirmPassword);
 
@@ -47,6 +50,7 @@ export default class SignupScreen extends Component {
                     properties: {
                         firstName: 'string',
                         lastName: 'string',
+                        macAddress: 'string',
                         email: 'string',
                         password: 'string'
                     }
@@ -58,6 +62,7 @@ export default class SignupScreen extends Component {
                     {
                         firstName: firstName,
                         lastName: lastName,
+                        macAddress: macAddress,
                         email: email,
                         password: password
                     }
@@ -134,6 +139,22 @@ export default class SignupScreen extends Component {
                                 placeholder="UNO Email"
                                 placeholderTextColor="#FFF"
                             />
+                            </View>
+
+                            <View style={styles.inputContainer}>
+                                <View style={styles.iconContainer}>
+                                    <Image
+                                        source={wifiIcon}
+                                        style={styles.inputIcon}
+                                        resizeMode="contain"
+                                    />
+                                </View>
+                                <TextInput
+                                    onChangeText={this.updateFormField('macAddress')}
+                                    style={[styles.input, styles.whiteFont]}
+                                    placeholder="Mac Address"
+                                    placeholderTextColor="#FFF"
+                                />
                         </View>
 
                         <View style={styles.inputContainer}>

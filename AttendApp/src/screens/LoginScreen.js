@@ -40,6 +40,7 @@ export default class LoginScreen extends Component {
                         firstName: 'string',
                         lastName: 'string',
                         email: 'string',
+                        // macAddress: 'string',
                         password: 'string'
                     }
                 }
