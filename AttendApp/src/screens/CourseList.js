@@ -47,7 +47,7 @@ export default class CourseList extends Component{
                     </View>
 
                     <View style={styles.inputsContainer}>
-                        <TouchableOpacity activeOpacity={.5} onPress={ ()=> navigate('ASheet') }>
+                        <TouchableOpacity activeOpacity={.5} onPress={ ()=> navigate('AttendanceSheet') }>
                             <View style={styles.button}>
                                 <Text style={styles.buttonText}>Attendance Sheet</Text>
                             </View>
