@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import {
-    AppRegistry,
     ListView,
     NativeAppEventEmitter,
     View,
     Text,
     StyleSheet,
     Image,
-    Button } from 'react-native';
-import BleManager from 'react-native-ble-manager';
+    TouchableOpacity } from 'react-native';
 
-class AttendanceSheet extends Component {
+import BleManager from 'react-native-ble-manager';
+const background = require("../img/background.png");
+
+export default class AttendanceSheet extends Component {
     constructor(props){
         super(props);
 
@@ -50,7 +51,9 @@ class AttendanceSheet extends Component {
     }
 
     render() {
+
         const {navigate} = this.props.navigation;
+
         return (
             <View style={styles.container}>
                 <Image
@@ -61,6 +64,7 @@ class AttendanceSheet extends Component {
                     <View style={styles.headerContainer}>
                         <View style={styles.headerTitleView}>
                             <Text style={styles.titleViewText}>Attendance Sheet</Text>
+
                         </View>
                     </View>
                     <View style={styles.inputsContainer}>
@@ -69,19 +73,20 @@ class AttendanceSheet extends Component {
                                 <Text style={styles.buttonText}>Take Attendance</Text>
                             </View>
                         </TouchableOpacity>
+                        <TouchableOpacity activeOpacity={.5} onPress={ ()=> navigate('CourseList') }>
+                            <View style={styles.button}>
+                                <Text style={styles.buttonText}>End Attendance</Text>
+                            </View>
+                        </TouchableOpacity>
                         <ListView
-                            enableEmptySections={false}
+
                             automaticallyAdjustContentInsets={false}
                             dataSource={this.state.dataSource}
                             renderRow={(rowData) => <Text>{rowData}</Text>}
                         />
                     </View>
                     <View style={styles.footerContainer}>
-                        <TouchableOpacity activeOpacity={.5} onPress={ ()=> navigate('CourseList') }>
-                            <View style={styles.button}>
-                                <Text style={styles.buttonText}>End</Text>
-                            </View>
-                        </TouchableOpacity>
+
                     </View>
                 </Image>
             </View>
@@ -200,5 +205,3 @@ const styles = StyleSheet.create({
         color: '#FFF'
     }
 });
-
-AppRegistry.registerComponent('AttendanceSheet', () => AttendanceSheet);
