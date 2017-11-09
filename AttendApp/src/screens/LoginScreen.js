@@ -29,7 +29,7 @@ export default class LoginScreen extends Component {
         this.setState({ [fieldName]: text })
     }
 
-    authenticate = () => {
+    authenticate = (navigate) => {
         const { username, password } = this.state
 
         Realm.open({
@@ -40,6 +40,7 @@ export default class LoginScreen extends Component {
                         firstName: 'string',
                         lastName: 'string',
                         email: 'string',
+                        macAddress: 'string',
                         password: 'string'
                     }
                 }
@@ -48,6 +49,9 @@ export default class LoginScreen extends Component {
             let validUser = realm.objects('User').some(function(user) {
                 return user.email === username && user.password === password;
             });
+						if (validUser) {
+							navigate('Home');
+						}
             console.log('is valid user', validUser);
         });
     };
@@ -91,7 +95,7 @@ export default class LoginScreen extends Component {
                       <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
                     </View>
                   </TouchableOpacity>
-                  <TouchableOpacity activeOpacity={.5} onPress={ () => this.authenticate() }>
+                  <TouchableOpacity activeOpacity={.5} onPress={ () => this.authenticate(navigate) }>
                     <View style={styles.button}>
                       <Text style={styles.buttonText}>Log In</Text>
                     </View>
