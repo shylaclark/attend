@@ -122,3 +122,6 @@ Final Presentation Notes
 2. Demo application: iOS and Android
 3. Sell your product to buyers.
 4. Testing/code quality results.
+
+
+git /Users/<username>/Library/Developer/CoreSimulator/Devices/<simulator-uuid>/data/Containers/Data/Application/<application-uuid>/Documents/default.realm
