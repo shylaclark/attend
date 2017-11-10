@@ -6,17 +6,11 @@ const courses = [
     {name: 'CSCI 5101- Programming Language Structure', instructor: 'Dr. ThisGuy'},
     {name: 'CSCI 6363- Agile Software Engineering', instructor: 'Dr. ThisGuy'},
     {name: 'CSCI 5501- Analysis of Algorithms', instructor: 'Dr. ThisGuy'},
-    {name: 'CSCI 3301- Computer Orginization', instructor: 'Dr. ThisGuy'},
+    {name: 'CSCI 3301- Computer Organization', instructor: 'Dr. ThisGuy'},
     {name: 'CSCI 2467- Systems Programming Concepts', instructor: 'Dr. ThisGuy'}
 ]
 const background = require("../img/background.png");
-    {name: 'CSCI 2467- Systems Programming Concepts', instructor: 'Dr. ThisGuy'},
-    {name: 'CSCI 5101- Programming Language Structure', instructor: 'Dr. ThisGuy'},
-    {name: 'CSCI 6363- Agile Software Engineering', instructor: 'Dr. ThisGuy'},
-    {name: 'CSCI 5501- Analysis of Algorithms', instructor: 'Dr. ThisGuy'},
-    {name: 'CSCI 3301- Computer Orginization', instructor: 'Dr. ThisGuy'},
-    {name: 'CSCI 2467- Systems Programming Concepts', instructor: 'Dr. ThisGuy'}
-]
+
 export default class CourseList extends Component{
     constructor(){
         super();
