@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import {AppRegistry, Text, View, Image, ListView, StyleSheet, TouchableOpacity} from 'react-native';
 
 const courses = [
@@ -8,8 +9,14 @@ const courses = [
     {name: 'CSCI 3301- Computer Orginization', instructor: 'Dr. ThisGuy'},
     {name: 'CSCI 2467- Systems Programming Concepts', instructor: 'Dr. ThisGuy'}
 ]
-const background = require("/Users/amandaschmidt/WebstormProjects/aars/AttendApp/src/img/background.png");
-
+const background = require("../img/background.png");
+    {name: 'CSCI 2467- Systems Programming Concepts', instructor: 'Dr. ThisGuy'},
+    {name: 'CSCI 5101- Programming Language Structure', instructor: 'Dr. ThisGuy'},
+    {name: 'CSCI 6363- Agile Software Engineering', instructor: 'Dr. ThisGuy'},
+    {name: 'CSCI 5501- Analysis of Algorithms', instructor: 'Dr. ThisGuy'},
+    {name: 'CSCI 3301- Computer Orginization', instructor: 'Dr. ThisGuy'},
+    {name: 'CSCI 2467- Systems Programming Concepts', instructor: 'Dr. ThisGuy'}
+]
 export default class CourseList extends Component{
     constructor(){
         super();
@@ -30,9 +37,7 @@ export default class CourseList extends Component{
     }
 
     render(){
-
         const {navigate} = this.props.navigation;
-
         return(
             <View style={styles.container}>
                 <Image
@@ -143,6 +148,7 @@ const styles = StyleSheet.create({
         color: "#000",
         fontSize: 18,
     },
+
     iconContainer: {
         paddingHorizontal: 15,
         justifyContent: 'center',
@@ -181,4 +187,4 @@ const styles = StyleSheet.create({
 });
 
 
-
+AppRegistry.registerComponent('CourseList', () => CourseList);
