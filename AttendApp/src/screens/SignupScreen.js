@@ -11,6 +11,8 @@ import {
     TouchableWithoutFeedback
 } from 'react-native'
 
+import ModalDropdown from 'react-native-modal-dropdown';
+
 const background = require("../img/background.png");
 const backIcon = require("../img/back.png");
 const personIcon = require("../img/person.png");
