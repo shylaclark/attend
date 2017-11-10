@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
-import {AppRegistry, Text, View, Image, ListView, StyleSheet} from 'react-native';
+
+import {AppRegistry, Text, View, Image, ListView, StyleSheet, TouchableOpacity} from 'react-native';
 
 const courses = [
     {name: 'CSCI 5101- Programming Language Structure', instructor: 'Dr. ThisGuy'},
     {name: 'CSCI 6363- Agile Software Engineering', instructor: 'Dr. ThisGuy'},
     {name: 'CSCI 5501- Analysis of Algorithms', instructor: 'Dr. ThisGuy'},
     {name: 'CSCI 3301- Computer Orginization', instructor: 'Dr. ThisGuy'},
+    {name: 'CSCI 2467- Systems Programming Concepts', instructor: 'Dr. ThisGuy'}
+]
+const background = require("../img/background.png");
     {name: 'CSCI 2467- Systems Programming Concepts', instructor: 'Dr. ThisGuy'},
     {name: 'CSCI 5101- Programming Language Structure', instructor: 'Dr. ThisGuy'},
     {name: 'CSCI 6363- Agile Software Engineering', instructor: 'Dr. ThisGuy'},
@@ -13,8 +17,6 @@ const courses = [
     {name: 'CSCI 3301- Computer Orginization', instructor: 'Dr. ThisGuy'},
     {name: 'CSCI 2467- Systems Programming Concepts', instructor: 'Dr. ThisGuy'}
 ]
-const background = require("/Users/amandaschmidt/AwesomeProject/background.png");
-
 export default class CourseList extends Component{
     constructor(){
         super();
@@ -35,6 +37,7 @@ export default class CourseList extends Component{
     }
 
     render(){
+        const {navigate} = this.props.navigation;
         return(
             <View style={styles.container}>
                 <Image
@@ -49,6 +52,11 @@ export default class CourseList extends Component{
                     </View>
 
                     <View style={styles.inputsContainer}>
+                        <TouchableOpacity activeOpacity={.5} onPress={ ()=> navigate('AttendanceSheet') }>
+                            <View style={styles.button}>
+                                <Text style={styles.buttonText}>Attendance Sheet</Text>
+                            </View>
+                        </TouchableOpacity>
                         <ListView
                             enableEmptySections={false}
                             automaticallyAdjustContentInsets={false}
@@ -129,6 +137,17 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         height: 50,
     },
+    button: {
+        backgroundColor: "#FFF",
+        paddingVertical: 20,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 30,
+    },
+    buttonText: {
+        color: "#000",
+        fontSize: 18,
+    },
 
     iconContainer: {
         paddingHorizontal: 15,
@@ -169,4 +188,3 @@ const styles = StyleSheet.create({
 
 
 AppRegistry.registerComponent('CourseList', () => CourseList);
-
