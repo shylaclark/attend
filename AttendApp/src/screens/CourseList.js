@@ -63,6 +63,11 @@ export default class CourseList extends Component{
                             dataSource={this.state.courseDataSource}
                             renderRow={this.renderRow.bind(this)}
                         />
+                        <TouchableOpacity activeOpacity={.5} onPress={ ()=> navigate('CreateCourse') }>
+                            <View style={styles.button}>
+                                <Text style={styles.buttonText}>Create Course</Text>
+                            </View>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.footerContainer}>
 

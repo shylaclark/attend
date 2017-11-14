@@ -15,8 +15,9 @@ const AttendApp = StackNavigator({
     Login: {screen: LoginScreen},
     Signup: {screen: SignupScreen},
     CourseList: {screen: CourseList},
-    AttendanceSheet: {screen: AttendanceSheet}
+    AttendanceSheet: {screen: AttendanceSheet},
     Home: {screen: HomeScreen},
+    CreateCourse: {screen: CreateCourse}
 });
 
 
