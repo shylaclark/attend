@@ -9,6 +9,7 @@ import LoginScreen from "./screens/LoginScreen";
 import CourseList from "./screens/CourseList";
 import AttendanceSheet from "./screens/AttendanceSheet";
 import HomeScreen from "./screens/HomeScreen";
+import CreateCourse from "./screens/CreateCourse";
 
 
 const AttendApp = StackNavigator({
@@ -17,6 +18,7 @@ const AttendApp = StackNavigator({
     CourseList: {screen: CourseList},
     AttendanceSheet: {screen: AttendanceSheet},
     Home: {screen: HomeScreen},
+    CreateCourse: {screen: CreateCourse}
 });
 
 
