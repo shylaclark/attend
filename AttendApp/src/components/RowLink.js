@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {AppRegistry, Button, Text, View, Image, ListView, StyleSheet, TouchableOpacity} from 'react-native';
-import AttendanceSheet from "./AttendanceSheet";
+import AttendanceSheet from "../screens/AttendanceSheet";
 
 export default class RowLink extends Component {
 
@@ -29,8 +29,11 @@ let styles = StyleSheet.create({
         flexDirection: 'row',
         height: 50,
         backgroundColor: "black",
-        justifyContent: 'center',
         alignItems: 'center',
+        alignContent: 'center',
+        paddingLeft: 10,
+
+
     },
     greyFont: {
         color: '#D8D8D8'
