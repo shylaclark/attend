@@ -55,6 +55,7 @@ export default class AttendanceSheet extends Component {
         const {navigate} = this.props.navigation;
 
         return (
+
             <View style={styles.container}>
                 <Image
                     source={background}
@@ -90,6 +91,7 @@ export default class AttendanceSheet extends Component {
                     </View>
                 </Image>
             </View>
+
         );
     }
 }
