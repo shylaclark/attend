@@ -14,7 +14,11 @@ let repository = new Realm({
             createdAt: 'date',
             updatedAt: 'date'
         }
-    }]
+    }],
+    schemaVersion: 1,
+    //migration: function(oldRealm, newRealm){
+    //    newRealm.deleteAll();
+    //}
 });
 
 let CourseService = {
@@ -40,6 +44,7 @@ let CourseService = {
         });
     }
 };
+
 
 CourseService.save(new CourseModel(1,'Space and Time Travel 101','Dr.Who', true));
 CourseService.save(new CourseModel(2,'Intro to Magical Engines', 'Ms. Frizzle', true));

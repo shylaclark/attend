@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
                 paddingBottom: 10,
                 paddingLeft: 2,
                 paddingRight: 2,
-                backgroundColor: 'tranparent',
+                backgroundColor: 'transparent',
     },
     bg: {
         paddingTop: 30,
@@ -214,4 +214,3 @@ const styles = StyleSheet.create({
 
 
 //AppRegistry.registerComponent('CourseList', () => CourseList);
-module.exports = ListViewItem;
