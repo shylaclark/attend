@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableHighlight} from 'react-native';
 import CourseModel from './CourseModel';
-//import OmniBox from './OmniBox';
+import SearchBar from './SearchBar';
 import SortableListView from 'react-native-sortable-listview';
 import ListViewItem from './ListViewItem';
 import Utils from './Utils';
@@ -57,9 +57,9 @@ class ListView extends Component {
 
         return (
             <View style={{flex: 1, marginLeft: 10, marginRight: 10}}>
-                /*<OmniBox
+                <SearchBar
                     data={Array.from(dataList)}
-                    updateDataList={this.updateDataList}/>*/
+                    updateDataList={this.updateDataList}/>
                 {listView}
             </View>
         )

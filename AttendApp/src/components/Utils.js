@@ -14,3 +14,5 @@ let Utils = {
         return courseList.find((item) => item.courseTitle.toLowerCase() === course.courseTitle.toLowerCase());
     }
 };
+
+module.exports = Utils;

@@ -9,7 +9,7 @@ let repository = new Realm({
             id: {type: 'string', indexed: true},
             courseNumber: 'int',
             courseTitle: 'string',
-            //completed: 'bool',
+            active: 'bool',
             createdAt: 'date',
             updatedAt: 'date'
         }
@@ -26,7 +26,7 @@ let CourseService = {
         if (repository.objects('CourseList').filtered("courseTitle = '" + course.courseTitle + "'").length) return;
 
         repository.write(() => {
-            todo.updatedAt = new Date();
+            course.updatedAt = new Date();
             repository.create('CourseList', course);
         })
     },
@@ -35,16 +35,16 @@ let CourseService = {
         if (!callback) return;
         repository.write(() => {
             callback();
-            todo.updatedAt = new Date();
+            course.updatedAt = new Date();
         });
     }
 };
 
-CourseService.save(new CourseModel('Hello Koding'));
-CourseService.save(new CourseModel('Make a Todo App with React Native'));
-CourseService.save(new CourseModel('Check to complete a todo'));
-CourseService.save(new CourseModel('Long press, drag and drop a todo to sort'));
-CourseService.save(new CourseModel('Save data with Realm'));
-CourseService.save(new CourseModel('Sync data with Firebase'));
+CourseService.save(new CourseModel(1,'Hello Koding',true));
+CourseService.save(new CourseModel(2,'Make a Todo App with React Native', true));
+CourseService.save(new CourseModel(3,'Check to complete a todo', true));
+CourseService.save(new CourseModel(4, 'Long press, drag and drop a todo to sort', true));
+CourseService.save(new CourseModel(5, 'Save data with Realm', true));
+CourseService.save(new CourseModel(6, 'Sync data with Firebase', false));
 
 module.exports = CourseService;
