@@ -9,6 +9,7 @@ let repository = new Realm({
             id: {type: 'string', indexed: true},
             courseNumber: 'int',
             courseTitle: 'string',
+            instructor: 'string',
             active: 'bool',
             createdAt: 'date',
             updatedAt: 'date'
@@ -40,11 +41,10 @@ let CourseService = {
     }
 };
 
-CourseService.save(new CourseModel(1,'Hello Koding',true));
-CourseService.save(new CourseModel(2,'Make a Todo App with React Native', true));
-CourseService.save(new CourseModel(3,'Check to complete a todo', true));
-CourseService.save(new CourseModel(4, 'Long press, drag and drop a todo to sort', true));
-CourseService.save(new CourseModel(5, 'Save data with Realm', true));
-CourseService.save(new CourseModel(6, 'Sync data with Firebase', false));
+CourseService.save(new CourseModel(1,'Space and Time Travel 101','Dr.Who', true));
+CourseService.save(new CourseModel(2,'Intro to Magical Engines', 'Ms. Frizzle', true));
+CourseService.save(new CourseModel(3,'Avian Dialects', 'Dr. DoLittle', true));
+CourseService.save(new CourseModel(4,'Rhyming Schemes 123', 'Dr. Seus', true));
+CourseService.save(new CourseModel(5,'Advanced Topics in Archeology: Escape Techniques', 'Dr. Jones', false));
 
 module.exports = CourseService;
