@@ -14,7 +14,7 @@
     "react-native-modal-dropdown": "^0.5.0",
     "react-native-router-flux": "^4.0.0-beta.22",
     "react-navigation": "^1.0.0-beta.13",
-    "realm": "^2.0.2"
+    "realm": "^2.0.9"
   },
   "devDependencies": {
     "babel-jest": "21.2.0",
@@ -23,6 +23,9 @@
     "react-test-renderer": "16.0.0-alpha.12"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-navigation)"
+    ]
   }
 }
