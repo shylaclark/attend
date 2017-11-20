@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
     Image,
     TextInput,
     TouchableOpacity,
-    Picker,
-    TouchableWithoutFeedback
 } from 'react-native'
 
 const background = require("../img/background.png");
@@ -20,14 +17,14 @@ export default class CreateCourse extends Component {
     state = {
         courseName: ' ',
         courseDescription: ' '
-    }
+    };
 
     updateFormField = fieldName => text => {
         this.setState({ [fieldName]: text })
-    }
+    };
 
     createAccount = (navigate) => {
-        const { courseName, courseDescription } = this.state
+        const { courseName, courseDescription } = this.state;
         // console.log('firstName', firstName);
         // console.log('lastName', lastName);
         // console.log('email', email);
@@ -46,15 +43,18 @@ export default class CreateCourse extends Component {
                 }
             ]
         }).then(realm => {
-
-            realm.write(() => {
-                realm.create('Course',
-                    {
-                        courseName: courseName,
-                        courseDescription: courseDescription
-                    }
-                );
-            });
+            try {
+                realm.write(() => {
+                    realm.create('Course',
+                        {
+                            courseName: courseName,
+                            courseDescription: courseDescription
+                        }
+                    );
+                });
+            } catch (e) {
+                console.log("Error on creation");
+            }
 
             navigate('CourseList');
 

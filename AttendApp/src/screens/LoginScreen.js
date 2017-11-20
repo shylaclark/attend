@@ -106,6 +106,7 @@ export default class LoginScreen extends Component {
 
                     <TouchableOpacity activeOpacity={.5}>
                       <View style={styles.signup}>
+                          <Text style={styles.whiteFont} onPress={ ()=> navigate('realmEx') }> Realm Example</Text>
                           <Text style={styles.whiteFont} onPress={ ()=> navigate('CourseList') }> Go to Course List</Text>
                           <Text style={styles.whiteFont} onPress={ ()=> navigate('Signup') }> Sign Up for AttendApp</Text>
                       </View>

@@ -68,17 +68,21 @@ export default class SignupScreen extends Component {
 					if (existingUser) {
 						alert("This email has been used already. Please enter a different email address.");
 					} else {
-						realm.write(() => {
-								realm.create('User',
-										{
-												firstName: firstName,
-												lastName: lastName,
-												macAddress: macAddress,
-												email: email,
-												password: password
-										}
-								);
-						});
+                        try {
+                            realm.write(() => {
+                                    realm.create('User',
+                                            {
+                                                    firstName: firstName,
+                                                    lastName: lastName,
+                                                    macAddress: macAddress,
+                                                    email: email,
+                                                    password: password
+                                            }
+                                    );
+                            });
+                        } catch (e) {
+                            console.log("Error on creation");
+                        }
 
 						navigate('Login');
 					}
