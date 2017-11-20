@@ -1,4 +1,4 @@
-// __tests__/Intro-test.js
+// __tests__/HomeScreen-test.js
 import 'react-native';
 import React from 'react';
 import HomeScreen from '../HomeScreen.js';
