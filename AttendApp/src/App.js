@@ -10,7 +10,10 @@ import CourseList from "./screens/CourseList";
 import AttendanceSheet from "./screens/AttendanceSheet";
 import HomeScreen from "./screens/HomeScreen";
 import CreateCourse from "./screens/CreateCourse";
-import realmEx from "./screens/realmEx";
+import RowLink from './components/RowLink';
+import ListView from './components/ListView';
+import ListViewItem from './components/ListViewItem';
+
 
 const AttendApp = StackNavigator({
     Login: {screen: LoginScreen},
@@ -19,7 +22,10 @@ const AttendApp = StackNavigator({
     AttendanceSheet: {screen: AttendanceSheet},
     Home: {screen: HomeScreen},
     CreateCourse: {screen: CreateCourse},
-    realmEx: {screen:realmEx}
+    RowLink: {screen: RowLink},
+    ListViewItem: {screen: ListViewItem},
+    ListViewItem: {screen: ListView}
+
 });
 
 

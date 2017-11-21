@@ -6,6 +6,7 @@ import SortableListView from 'react-native-sortable-listview';
 import ListViewItem from './ListViewItem';
 import Utils from './Utils';
 import CourseService from './CourseService';
+import Header from './Header';
 
 let dataList = CourseService.findAll();
 var dataListOrder = getOrder(dataList);
@@ -56,7 +57,9 @@ class ListView extends Component {
         }
 
         return (
+
             <View style={{flex: 1, marginLeft: 10, marginRight: 10}}>
+                <Header title={'Courses'}></Header>
                 <SearchBar
                     data={Array.from(dataList)}
                     updateDataList={this.updateDataList}/>

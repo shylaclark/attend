@@ -28,8 +28,18 @@ class SearchBar extends Component {
 
     render() {
         return (
-            <TextInput style={{height: 36, padding: 4, marginBottom: 0, fontSize: 16, borderWidth: 1, borderColor: '#eee', borderRadius: 8, backgroundColor: '#fff'}}
-                       placeholder='Add a todo or Search'
+            <TextInput style={{
+                height: 36,
+                padding: 4,
+                marginTop:10,
+                marginBottom: 0,
+                fontSize: 16,
+                borderWidth: 1,
+                borderColor: '#eee',
+                borderRadius: 8,
+                backgroundColor: '#f8f8ff'}}
+                       placeholderTextColor='#808080'
+                       placeholder='  Find Your Course...'
                        blurOnSubmit={false}
                        value={this.state.newValue}
                        onChange={this.onChange}>

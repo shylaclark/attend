@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {AppRegistry, Button, Text, View, Image, ListView, StyleSheet, TouchableOpacity} from 'react-native';
-import Icon from  'react-native-vector-icons/MaterialIcons';
 
 //export default
 class RowLink extends Component {
@@ -9,42 +8,37 @@ class RowLink extends Component {
         super(props);
         this.state = {
             data: this.props.data,
+            navigation: this.props.navigation
         };
     }
-    componentWillRecieveProps(props){
+    componentWillReceiveProps(props){
         this.setState({
-            data:props.data
+            data:props.data,
+            navigation: props.navigation
         });
     }
     render() {
-        const { navigate } = this.props.navigation;
-        let iconName = this.state.data.active ? 'check-box' : 'check-box-outline-blank';
-        let color = this.props.color || "#0000";
-
         return (
 
-            /*<View>
+            //<View>
             //    <TouchableOpacity activeOpacity={.5} onPress={ ()=> navigate('AttendanceSheet') }>
             //        <View style={styles.inputContainer}>
             //            <Text style={styles.whiteFont}>{this.props.title}</Text>
             //        </View>
             //    </TouchableOpacity>
-            </View>
-            */
+            //</View>
 
-            <Icon.Button
-                data={this.state.data}
-                name={iconName}
-                backgroundColor='rgba(0,0,0,0)'
-                color={color}
-                underlayColor='rgba(0,0,0,0)'
+
+            <Button
+                title={' '}
+                style={styles.inputContainer}
                 size={20}
                 iconStyle={{marginLeft: -10, marginRight: 0}}
-                activeOpacity={1}
-                borderRadius={5}
-                onPress={this.props.onCheckBoxPressed}
+                activeOpacity={.5}
+                //borderRadius={5}
+                onPress={ ()=> this.state.navigation.navagate('AttendanceSheet')}
             >
-            </Icon.Button>
+            </Button>
         );
     }
 }

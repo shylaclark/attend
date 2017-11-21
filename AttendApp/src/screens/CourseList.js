@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import {AppRegistry, Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
-//import AttendanceSheet from "./AttendanceSheet";
+import AttendanceSheet from "./AttendanceSheet";
 //import RowLink from "../components/RowLink";
 //import CreateCourse from "./CreateCourse";
 //import Header from "../components/Header";
@@ -13,66 +13,14 @@ import ListView from '../components/ListView';
 const background = require("../img/background.png");
 
 export default class CourseList extends Component{
-    /*getState() {
-        console.log("getInitialState");
-        var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        let courses = [ realm.objects('Course') ];
-        console.log("courses: " + course);
-        return {
-            //dataSource: ds.cloneWithRows(['row 1', 'row 2', 'row 3']),
-            dataSource: ds.cloneWithRows(courses)
-        };
-    }
-    */
-
-    /*constructor(props) {
-        super(props);
-
-        const getSectionData = (dataBlob, sectionId) => dataBlob[sectionId];
-        const getRowData = (dataBlob, sectionId, rowId) => dataBlob[`${rowId}`];
-
-        const ds = new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 !== r2,
-            sectionHeaderHasChanged : (s1, s2) => s1 !== s2,
-            getSectionData,
-            getRowData,
-        });
-
-        const { dataBlob, sectionIds, rowIds } = this.formatData(courses);
-        this.state = {
-            courseDataSource: ds.cloneWithRowsAndSections(dataBlob, sectionIds, rowIds),
-        };
-    }
-
-    renderRow(course, sectionId, rowId, highlightRow){
-        return(
-            <RowLink navigation={this.props.navigation} title={course.name}/>
-        )
-    }
-    */
-
 
     render(){
-        //const {courses} = realm.object('Course')
+        const { navigate } = this.props.navigation;
         return(
             <Image source={background} style={styles.background} resizeMode="cover">
-                /*<ListView
-                    style={styles.container}
-                    enableEmptySections={false}
-                    automaticallyAdjustContentInsets={false}
-                    dataSource={this.state.courseDataSource}
-                    renderRow={(rowData) => <Text>{rowData.path}</Text>}
-                    //renderRow={this.renderRow.bind(this)}
-                    renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-                    renderHeader={() => <Header title={'Courses'} />}
-                    renderFooter={() => <ListFooter title = {'Create New Course'} navigation={'CreateCourse'} navigate = {navigate}/>}
-                    renderSectionHeader={(sectionData) => <SectionHeader {...sectionData} />}
-                    contentBackgroundColor={'black'}
 
-                />
-                */
                 <View style={styles.container}>
-                    <ListView></ListView>
+                    <ListView navigation = {this.props.navigation}></ListView>
                 </View>
             </Image>
         );

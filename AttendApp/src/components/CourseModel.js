@@ -1,13 +1,14 @@
 import Utils from './Utils';
 
 class CourseModel {
-    constructor(courseNumber, courseTitle, instructor, active) {
+    constructor(courseDepartment, courseNumber, courseSection, courseTitle, instructor, active) {
         this.id = Utils.guid();
+        this.courseDepartment = courseDepartment;
         this.courseNumber = courseNumber;
-        this.courseTitle = courseTitle;
-        this.active = active || false;
+        this.courseTitle = courseTitle ;
+        this.courseSection = courseSection || '0000';
+        this.active = active || true;
         this.instructor = instructor;
-        //this.completed = completed || false;
         this.createdAt = new Date();
         this.updatedAt = new Date();
     }
