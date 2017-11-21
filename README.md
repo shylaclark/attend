@@ -3,29 +3,53 @@
 Cross-platform mobile application for automatically recording student attendance.
 
 
+
 ## Getting Started
 
 [Install React Native and its dependencies.](https://facebook.github.io/react-native/docs/getting-started.html) Follow directions under 'Building Projects with Native Code' tab.
 
+### Setup
+On the command line, clone project using Git Large File Storage:
+```
+git lfs clone https://github.com/shylaclark/attend.git
+```
+Change directory to project root:
+```
+cd attend/AttendApp
+```
+Install libraries:
+```
+npm install --save
+```
+Install REALM database library:
+```
+npm install --save realm
+```
+Link libraries:
+```
+npm link
+```
 
-## REALM Database Installation
-In command line, install Realm inside of AttendApp directory: 'npm install --save realm'
+## Test App
 
-Link Realm for Android and iOS: 'react-native link realm'
-
-If you had the app running, you may need to run 'watchman watch-del-all' and 'npm cache clean'
-
-Shut down and restart Xcode and Simulator where open.
-
+On the command line, run the following from the project root:
 ### iOS
-1. cd to project root.
-2. `react-native run-ios'
+```
+react-native run-ios
+```
 
 ### Android
-1. Open AVD Manager in Android Studio and select green arrow to launch AVD.
-2. cd to project root.
-3. `react-native run-android`
-
+Open AVD Manager in Android Studio and select green arrow to launch emulator.
+```
+react-native run-android
+```
+### Troubleshooting
+If you had the app running, you may need to run:
+```
+watchman watch-del-all
+npm cache clean
+```
+Shut down and restart Xcode and Simulator (iOS) or Android Studio and Emulator where open.
 
 ## Course
 
@@ -39,16 +63,17 @@ Shut down and restart Xcode and Simulator where open.
 
 ### Agile
 
-* Agile Planning: CA Agile (Rally)
-* Continuous Integration: Jenkins Blue Ocean
+* Planning: CA Agile (Rally)
+* Continuous Integration: Bitrise
 * Unit Testing: Jest
 
 ### Development
 
 * UI Framework: React Native
-* Languages: JavaScript
+* Languages: JavaScript, Swift/Objective-C, Java
 * IDE: WebStorm
 * Emulators: Android Studio (Android), Xcode (iOS)
+* Build Tools: Gradle (Android), xcodebuild (iOS)
 
 
 ## Authors
