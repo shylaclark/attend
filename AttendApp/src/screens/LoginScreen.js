@@ -90,11 +90,6 @@ export default class LoginScreen extends Component {
                         secureTextEntry
                     />
                   </View>
-                  <TouchableOpacity activeOpacity={.5}>
-                    <View>
-                      <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-                    </View>
-                  </TouchableOpacity>
                   <TouchableOpacity activeOpacity={.5} onPress={ () => this.authenticate(navigate) }>
                     <View style={styles.button}>
                       <Text style={styles.buttonText}>Log In</Text>
