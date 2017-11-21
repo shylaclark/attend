@@ -7,6 +7,7 @@ import ListViewItem from './ListViewItem';
 import Utils from './Utils';
 import CourseService from './CourseService';
 import Header from './Header';
+import ListFooter from './ListFooter';
 
 let dataList = CourseService.findAll();
 var dataListOrder = getOrder(dataList);
@@ -42,6 +43,7 @@ class ListView extends Component {
     }
 
     render() {
+        const {navigate} = this.props.navigation;
         let listView = (<View></View>);
         if (this.state.dataList.length) {
             listView = (
@@ -61,6 +63,7 @@ class ListView extends Component {
             <View style={{flex: 1, marginLeft: 10, marginRight: 10}}>
                 <Header title={'Courses'}></Header>
                 {listView}
+                <ListFooter navigation = {this.props.navigation} title={'Create New Course'}></ListFooter>
             </View>
         )
     }
