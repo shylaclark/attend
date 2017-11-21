@@ -60,13 +60,10 @@ class ListView extends Component {
 
             <View style={{flex: 1, marginLeft: 10, marginRight: 10}}>
                 <Header title={'Courses'}></Header>
-                <SearchBar
-                    data={Array.from(dataList)}
-                    updateDataList={this.updateDataList}/>
                 {listView}
             </View>
         )
     }
 };
-
+//<SearchBar data={Array.from(dataList)} updateDataList={this.updateDataList}/>
 module.exports = ListView;
