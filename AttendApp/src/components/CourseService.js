@@ -57,7 +57,7 @@ let CourseService = {
     }
 
 };
-CourseService.deleteAll();
+//CourseService.deleteAll();
 CourseService.save(new CourseModel('MATH', 1234, 100, 'Space and Time Travel 102','Dr.Who', true));
 CourseService.save(new CourseModel('ENGR', 2345, 200, 'Intro to Magic Engines', 'Ms. Frizzle', true));
 CourseService.save(new CourseModel('LANG', 3456, 300, 'Mamalian Dialects', 'Dr. DoLittle', true));
