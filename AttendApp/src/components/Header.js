@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TextInput } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+
         padding: 8,
         flexDirection: 'row',
         alignItems: 'center',
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     },
     headerTitleView: {
         backgroundColor: 'transparent',
-        marginTop: 20,
+        marginTop: 10,
         marginLeft: 20,
     },
     titleViewText: {

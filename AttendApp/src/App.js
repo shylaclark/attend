@@ -10,6 +10,9 @@ import CourseList from "./screens/CourseList";
 import AttendanceSheet from "./screens/AttendanceSheet";
 import HomeScreen from "./screens/HomeScreen";
 import CreateCourse from "./screens/CreateCourse";
+import RowLink from './components/RowLink';
+import ListView from './components/ListView';
+import ListViewItem from './components/ListViewItem';
 
 
 const AttendApp = StackNavigator({
@@ -19,6 +22,10 @@ const AttendApp = StackNavigator({
     AttendanceSheet: {screen: AttendanceSheet},
     Home: {screen: HomeScreen},
     CreateCourse: {screen: CreateCourse},
+    RowLink: {screen: RowLink},
+    ListViewItem: {screen: ListViewItem},
+    ListViewItem: {screen: ListView}
+
 });
 
 

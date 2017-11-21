@@ -9,6 +9,10 @@ import {
     TouchableOpacity } from 'react-native';
 
 import BleManager from 'react-native-ble-manager';
+import Header from "../components/Header";
+import ListFooter from "../components/ListFooter";
+import SectionHeader from "../components/SectionHeader";
+
 const background = require("../img/background.png");
 
 export default class AttendanceSheet extends Component {
@@ -56,92 +60,89 @@ export default class AttendanceSheet extends Component {
 
         return (
 
-            <View style={styles.container}>
-                <Image
-                    source={background}
-                    style={[styles.container, styles.bg]}
-                    resizeMode="cover"
-                >
-                    <View style={styles.headerContainer}>
-                        <View style={styles.headerTitleView}>
-                            <Text style={styles.titleViewText}>Attendance Sheet</Text>
-
+            <Image
+                source={background}
+                style={[styles.container, styles.background, styles.bg]}
+                resizeMode="cover"
+            >
+                <View style={styles.container2}>
+                    <View style={styles.headerTitleView}>
+                        <Text style={styles.titleViewText}>Attendance</Text>
+                    </View>
+                </View>
+                <View style={styles.container3}>
+                    <TouchableOpacity activeOpacity={.5} onPress={ () => this.startScanning() }>
+                        <View style={styles.button}>
+                            <Text style={styles.buttonText}>Take Roll</Text>
                         </View>
-                    </View>
-                    <View style={styles.inputsContainer}>
-                        <TouchableOpacity activeOpacity={.5} onPress={ () => this.startScanning() }>
-                            <View style={styles.button}>
-                                <Text style={styles.buttonText}>Take Attendance</Text>
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity activeOpacity={.5} onPress={ ()=> navigate('CourseList') }>
-                            <View style={styles.button}>
-                                <Text style={styles.buttonText}>End Attendance</Text>
-                            </View>
-                        </TouchableOpacity>
-                        <ListView
+                    </TouchableOpacity>
+                    <ListView
 
-                            automaticallyAdjustContentInsets={false}
-                            dataSource={this.state.dataSource}
-                            renderRow={(rowData) => <Text>{rowData}</Text>}
-                        />
-                    </View>
-                    <View style={styles.footerContainer}>
+                        style={styles.container}
+                        automaticallyAdjustContentInsets={false}
+                        dataSource={this.state.dataSource}
+                        renderRow={(rowData) => <Text>{rowData}</Text>}
+                        renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+                        renderFooter={() => <ListFooter title = {'End Roll'} navigation={'CourseList'} navigate = {navigate}/>}
+                        contentBackgroundColor={'black'}
 
-                    </View>
-                </Image>
-            </View>
+                    />
+                </View>
+                <View style={styles.footerContainer}>
 
+                </View>
+            </Image>
         );
     }
 }
 const styles = StyleSheet.create({
-    row: {
-        flex:1,
-        justifyContent:'center',
-        padding:10,
-        backgroundColor: 'black',
-        marginBottom:3
-    },
-    rowText: {
-        flex:1,
-        flexDirection: 'row',
-        color: 'white'
-    },
     container: {
-    },
-    bg: {
+        flex:1,
+        flexDirection:'column'
+    },container2: {
+        flexDirection:'row',
         paddingTop: 30,
-        width: null,
-        height: null
+        alignItems: 'center',
+        backgroundColor: '#000',
     },
-    headerContainer: {
-        flex: 3,
-    },
-    inputsContainer: {
-        marginTop: 100,
-    },
-    footerContainer: {
-        flex: 1
-    },
-    headerIconView: {
-        marginLeft: 10,
-        backgroundColor: 'transparent'
-    },
-    headerBackButtonView: {
-        width: 20,
-        height: 20,
+    container3: {
+        flexDirection:'column',
+        padding: 8,
+        alignItems: 'center',
+        justifyContent: "center",
+        backgroundColor: '#000',
     },
     button: {
-        backgroundColor: "#FFF",
-        paddingVertical: 20,
+        flexDirection: 'column',
+        backgroundColor: "transparent",
+        borderColor: "#8E8E8E",
+        borderWidth: StyleSheet.hairlineWidth,
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+        borderRadius: 5,
         alignItems: "center",
         justifyContent: "center",
         marginTop: 30,
+        bottom: 0
     },
     buttonText: {
-        color: "#000",
+        color: "#fff",
         fontSize: 18,
+    },
+    separator: {
+
+        height: StyleSheet.hairlineWidth,
+        backgroundColor: '#8E8E8E',
+    },
+    bg: {
+        paddingTop: 30,
+    },
+    background: {
+        flex:1,
+        height: '100%',
+        width: '100%',
+        justifyContent: 'center',           // Center vertically
+        alignItems: 'center',
     },
     backButtonIcon: {
         width: 25,
@@ -156,46 +157,12 @@ const styles = StyleSheet.create({
         fontSize: 40,
         color: '#fff',
     },
-    dropdownText: {
-        fontSize: 17,
-        color: '#fff',
-    },
-    inputs: {
-        paddingVertical: 20,
-    },
     inputContainer: {
         borderWidth: 1,
         borderBottomColor: '#CCC',
         borderColor: 'transparent',
         flexDirection: 'row',
         height: 50,
-    },
-
-    iconContainer: {
-        paddingHorizontal: 15,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    inputIcon: {
-        width: 20,
-        height: 20,
-    },
-    input: {
-        flex: 1,
-        paddingHorizontal: 10,
-    },
-    signup: {
-        backgroundColor: '#FFF',
-        paddingVertical: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 10,
-        marginBottom: 10,
-    },
-    login: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'transparent',
     },
     greyFont: {
         color: '#D8D8D8'
@@ -207,3 +174,4 @@ const styles = StyleSheet.create({
         color: '#FFF'
     }
 });
+
