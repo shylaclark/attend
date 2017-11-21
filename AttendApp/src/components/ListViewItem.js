@@ -63,7 +63,7 @@ class ListViewItem extends Component{
                         flexDirection: 'row',
                         alignItems: 'center'}}>
                         <RowLink data={data} color={color} navigation={this.props.navigation}></RowLink>
-                        <Text style={{marginRight: 10, fontSize:18, color: color, textDecorationLine: textDecorationLine}}>{[data.courseDepartment, ' ', data.courseNumber, ' - ', data.courseTitle, ' - ', data.courseSection]}</Text>
+                        <Text style={{marginRight: 10,  fontSize: 16, color: color, textDecorationLine: textDecorationLine}}>{[data.courseDepartment, ' ', data.courseNumber, ' (', data.courseSection, ')- ', data.courseTitle ]}</Text>
 
                         </View>
                 </TouchableOpacity>

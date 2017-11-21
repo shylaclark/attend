@@ -63,7 +63,7 @@ CourseService.save(new CourseModel('ENGR', 2345, 200, 'Intro to Magic Engines', 
 CourseService.save(new CourseModel('LANG', 3456, 300, 'Mamalian Dialects', 'Dr. DoLittle', true));
 CourseService.save(new CourseModel('LANG', 4567, 400, 'Rhyming 123', 'Dr. Seus', true));
 CourseService.save(new CourseModel('LANG', 4567, 401, 'Rhyming 123', 'Dr. Seus', true));
-CourseService.save(new CourseModel('GEOL', 5678, 500, 'Scpecial Topics in Archeology: Escape Techniques', 'Dr. Jones', true));
+CourseService.save(new CourseModel('GEOL', 5678, 500, 'Escape Techniques', 'Dr. Jones', true));
 
 
 module.exports = CourseService;
