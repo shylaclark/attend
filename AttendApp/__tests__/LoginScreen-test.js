@@ -1,51 +1,80 @@
-import 'react-native';
-import React from 'react';
-import LoginScreen from '../LoginScreen';
-
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+import { RaisedButton } from 'material-ui';
 
 
 
-// These serve as integration tests for the jest-react-native preset.
-it('renders the ActivityIndicator component', () => {
-    const ActivityIndicator = require('ActivityIndicator');
-    const tree = renderer
-        .create(<ActivityIndicator animating={true} size="small" />)
-        .toJSON();
-    expect(tree).toMatchSnapshot();
+const handleSubmit = jest.fn();
+const elementOptions = {
+    Field: {
+        selector: Field,
+        staticProps: { component: MyTextField },
+    },
+    SubmitButton: {
+        selector: RaisedButton,
+        staticProps: { label: 'Submit', onTouchTap: handleSubmit },
+    }
+};
+
+test('with defaultProps', () => {
+    const tree = renderer.shallowCreate(
+        <LoginScreen handlerSubmit={jest.fn()} />
+).toJSON();
+expect(tree).toMatchSnapshot();
 });
 
-it('renders the Image component', done => {
-    const Image = require('Image');
-    Image.getSize('path.jpg', (width, height) => {
-        const tree = renderer.create(<Image style={{height, width}} />).toJSON();
-        expect(tree).toMatchSnapshot();
-        done();
-    });
+test('when submitting', () => {
+    const tree = renderer.shallowCreate(
+        <LoginScreen handlerSubmit={jest.fn()} submitting />
+).toJSON();
+expect(tree).toMatchSnapshot();
 });
 
-it('renders the TextInput component', () => {
-    const TextInput = require('TextInput');
-    const tree = renderer
-        .create(<TextInput autoCorrect={false} value="apple banana kiwi" />)
-        .toJSON();
-    expect(tree).toMatchSnapshot();
+const renderModes = [{
+    desc: 'with default props',
+    props: { handleSubmit },
+    elementsWithProps: {
+        Field: [{
+            floatingLabelText: 'Username',
+            name: 'username',
+        }, {
+            floatingLabelText: 'Password',
+            name: 'password',
+            type: 'password',
+        }],
+        SubmitButton: [{  }], // Indicated one element with default props
+    },
+}, {
+    desc: 'when submitting',
+    props: { handlerSubmit, submitting },
+    elementsWithProps: {
+        SubmitButton: [{ disabled: true  }],
+    },
+}]
+
+describe('ImageRenderer(props): ElementsTree', () => {
+    const testRenderMode = ({ desc, props, elementsWithProps }) => describe(desc, () => {
+    const wrapper = shallow(<ImageRenderer {...defaultProps} {...props} />);
+
+const testElementsByOptions = ({ selector, staticProps }, componentName) => {
+    const expectedElements = elementsWithProps[componentName] || [];
+    const selectedElements = wrapper.find(selector);
+
+    it(`should render ${expectedElements.length} entities of ${componentName}`, () => {
+        expect(selectedElements.length).toBe(expectedElements.length);
 });
 
-it('renders the ListView component', () => {
-    const ListView = require('ListView');
-    const Text = require('Text');
-    const dataSource = new ListView.DataSource({
-        rowHasChanged: (r1, r2) => r1 !== r2,
-    }).cloneWithRows(['apple', 'banana', 'kiwi']);
-    const tree = renderer
-        .create(
-            <ListView
-                dataSource={dataSource}
-                renderRow={rowData => <Text>{rowData}</Text>}
-            />
-        )
-        .toJSON();
-    expect(tree).toMatchSnapshot();
+    const testExpectedElement = (expectedProps, elementIndex) =>
+    describe(`${elementIndex + 1}th element of ${componentName}`, () => {
+        const expectedElementProps = { ...staticProps, ...expectedProps };
+    const elementProps = selectedElements.at(elementIndex).props();
+
+    testExpectedProps(elementProps, expectedElementProps);
+});
+
+    _.forEach(expectedElements, testExpectedElement);
+};
+
+_.forEach(elementOptions, testElementsByOptions);
+});
+
+_.forEach(renderModes, testRenderMode);
 });
