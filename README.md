@@ -47,7 +47,7 @@ react-native run-android
 If you had the app running, you may need to run:
 ```
 watchman watch-del-all
-npm cache clean
+npm cache verify
 ```
 Shut down and restart Xcode and Simulator (iOS) or Android Studio and Emulator where open.
 
