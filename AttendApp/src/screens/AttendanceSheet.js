@@ -55,6 +55,7 @@ export default class AttendanceSheet extends Component {
         const {navigate} = this.props.navigation;
 
         return (
+
             <View style={styles.container}>
                 <Image
                     source={background}
@@ -82,14 +83,14 @@ export default class AttendanceSheet extends Component {
 
                             automaticallyAdjustContentInsets={false}
                             dataSource={this.state.dataSource}
-                            renderRow={(rowData) => <Text>{rowData}</Text>}
-                        />
+                            renderRow={(rowData)
                     </View>
                     <View style={styles.footerContainer}>
 
                     </View>
                 </Image>
             </View>
+
         );
     }
 }

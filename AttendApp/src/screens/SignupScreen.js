@@ -145,27 +145,7 @@ export default class SignupScreen extends Component {
                                 />
                             </View>
                             <ModalDropdown
-                                options={['Instructor', 'Student']}
-                                style={[{
-                                    backgroundColor:'transparent',
-                                    flex: 3,
-                                    justifyContent: 'center',
-                                    marginLeft: 10,
-                                }]}
-                                textStyle={styles.dropdownText}
-                                dropdownStyle={[{
-                                    paddingTop: 5,
-                                    backgroundColor: 'transparent',
-                                    borderBottomColor: '#CCC',
-                                    borderColor: '#000',
-                                    width: 200,
-                                    overflow: 'scroll'
-
-                                }]}
-                                dropdownTextHighlightStyle={{fontWeight: 'bold'}}
-                                dropdownTextStyle={[{color: 'black', justifyContent: 'center', fontSize: 15}]}
-                                defaultValue={"Status"}
-                            />
+                                options={['Instructor',
                         </View>
 
                         <View style={styles.inputContainer}>

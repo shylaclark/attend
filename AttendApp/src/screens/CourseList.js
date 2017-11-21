@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 
 import {AppRegistry, Text, View, Image, ListView, StyleSheet, TouchableOpacity} from 'react-native';
+import AttendanceSheet from "./AttendanceSheet";
+import RowLink from "../components/RowLink";
+import CreateCourse from "./CreateCourse";
+import Header from "../components/Header";
+import ListFooter from "../components/ListFooter";
+import SectionHeader from "../components/SectionHeader";
 
 const courses = [
     {name: 'CSCI 5101- Programming Language Structure', instructor: 'Dr. ThisGuy'},
@@ -12,57 +18,102 @@ const courses = [
 const background = require("../img/background.png");
 
 export default class CourseList extends Component{
-    constructor(){
-        super();
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    constructor(props) {
+        super(props);
+
+        const getSectionData = (dataBlob, sectionId) => dataBlob[sectionId];
+        const getRowData = (dataBlob, sectionId, rowId) => dataBlob[`${rowId}`];
+
+        const ds = new ListView.DataSource({
+            rowHasChanged: (r1, r2) => r1 !== r2,
+            sectionHeaderHasChanged : (s1, s2) => s1 !== s2,
+            getSectionData,
+            getRowData,
+        });
+
+        const { dataBlob, sectionIds, rowIds } = this.formatData(courses);
         this.state = {
-            courseDataSource: ds.cloneWithRows(courses),
+            courseDataSource: ds.cloneWithRowsAndSections(dataBlob, sectionIds, rowIds),
         };
     }
 
     renderRow(course, sectionId, rowId, highlightRow){
         return(
-
-            <View style={styles.row}>
-                <Text style={styles.rowText}>{course.name}</Text>
-                <Text style={styles.rowText}>{course.instructor}</Text>
-            </View>
+            <RowLink navigation={this.props.navigation} title={course.name}/></RowLink>
         )
+    }
+
+    formatData(data) {
+        /* We're sorting by alphabetically so we need the alphabet*/
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+        /* Need somewhere to store our data*/
+        const dataBlob = {};
+        const sectionIds = [];
+        const rowIds = [];
+
+        /* Each section is going to represent a letter in the alphabet so we loop over the alphabet*/
+        for (let sectionId = 0; sectionId < alphabet.length; sectionId++) {
+            /* Get the character we're currently looking for*/
+            const currentChar = alphabet[sectionId];
+
+            /* Get course names that start with the current letter*/
+            const course = data.filter((course) => course.name.toUpperCase().indexOf(currentChar) === 0);
+
+            /* If there are any courses that have a name starting with the current letter then we'll
+             * add a new section otherwise we just skip over it
+             */
+            if (course.length > 0) {
+                /* Add a section id to our array so the listview knows that we've got a new section*/
+                sectionIds.push(sectionId);
+
+                /* Store any data we would want to display in the section header. In our case we want to show
+                 * the current character
+                 */
+                dataBlob[sectionId] = { character: currentChar };
+
+                /* Setup a new array that we can store the row ids for this section*/
+                rowIds.push([]);
+
+                /* Loop over the valid classes for this section*/
+                for (let i = 0; i < course.length; i++) {
+                    /* Create a unique row id for the data blob that the listview can use for reference*/
+                    const rowId = `${sectionId}:${i}`;
+
+                    /* Push the row id to the row ids array. This is what listview will reference to pull
+                     * data from our data blob
+                     */
+                    rowIds[rowIds.length - 1].push(rowId);
+
+                    /* Store the data we care about for this row*/
+                    dataBlob[rowId] = course[i];
+                }
+            }
+        }
+
+        return { dataBlob, sectionIds, rowIds };
     }
 
     render(){
         const {navigate} = this.props.navigation;
         return(
-            <View style={styles.container}>
-                <Image
-                    source={background}
-                    style={[styles.container, styles.bg]}
-                    resizeMode="cover"
-                >
-                    <View style={styles.headerContainer}>
-                        <View style={styles.headerTitleView}>
-                            <Text style={styles.titleViewText}>Courses</Text>
-                        </View>
-                    </View>
+            <Image source={background} style={styles.background} resizeMode="cover">
 
-                    <View style={styles.inputsContainer}>
-                        <TouchableOpacity activeOpacity={.5} onPress={ ()=> navigate('AttendanceSheet') }>
-                            <View style={styles.button}>
-                                <Text style={styles.buttonText}>Attendance Sheet</Text>
-                            </View>
-                        </TouchableOpacity>
                         <ListView
+                            style={styles.container}
                             enableEmptySections={false}
                             automaticallyAdjustContentInsets={false}
                             dataSource={this.state.courseDataSource}
                             renderRow={this.renderRow.bind(this)}
-                        />
-                    </View>
-                    <View style={styles.footerContainer}>
+                            renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+                            renderHeader={() => <Header title={'Courses'} />}
+                            renderFooter={() => <ListFooter title = {'Create New Course}
+                            renderSectionHeader={(sectionData) => <SectionHeader {...sectionData} />}
+                            contentBackgroundColor={'black'}
 
-                    </View>
-                </Image>
-            </View>
+                        /></ListView>
+
+            </Image>
         );
     }
 }
@@ -80,12 +131,25 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         color: 'white'
     },
+    separator: {
+
+        height: StyleSheet.hairlineWidth,
+        backgroundColor: '#8E8E8E',
+    },
     container: {
+        flex:1,
+        flexDirection:'column'
     },
     bg: {
         paddingTop: 30,
         width: null,
-        height: null
+        height: null,
+    },
+    background: {
+        height: '100%',
+        width: '100%',
+        justifyContent: 'center',           // Center vertically
+        alignItems: 'center',
     },
     headerContainer: {
         flex: 3,
