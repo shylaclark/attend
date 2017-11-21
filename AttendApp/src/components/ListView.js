@@ -44,12 +44,12 @@ class ListView extends Component {
 
     render() {
         const {navigate} = this.props.navigation;
-        let listView = (<View></View>);
+        let listView = (<View style={{flex: 3}}></View>);
         if (this.state.dataList.length) {
             listView = (
                 <SortableListView
                     ref='listView'
-                    style={{flex: 1}}
+                    style={{flex: 3}}
                     data={this.state.dataList}
                     order={dataListOrder}
                     onRowMoved={e => moveOrderItem(this, e.from, e.to)}
@@ -61,9 +61,9 @@ class ListView extends Component {
         return (
 
             <View style={{flex: 1, marginLeft: 10, marginRight: 10}}>
-                <Header title={'Courses'}></Header>
+                <Header style={{flex: 1}} title={'Courses'}></Header>
                 {listView}
-                <ListFooter navigation = {this.props.navigation} title={'Create New Course'}></ListFooter>
+                <ListFooter style={{flex: 1}} navigation = {this.props.navigation} title={'Create New Course'}></ListFooter>
             </View>
         )
     }
