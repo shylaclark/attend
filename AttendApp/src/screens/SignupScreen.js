@@ -121,8 +121,7 @@ export default class SignupScreen extends Component {
 
                         <View style={styles.inputContainer}>
                             <View style={styles.iconContainer}>
-                                <Image
-                                    source={personIcon}
+                                <Image source={personIcon}
                                     style={styles.inputIcon}
                                     resizeMode="contain"
                                 />
@@ -145,26 +144,22 @@ export default class SignupScreen extends Component {
                                 />
                             </View>
                             <ModalDropdown
-                                options={['Instructor', 'Student']}
-                                style={[{
-                                    backgroundColor:'transparent',
-                                    flex: 3,
-                                    justifyContent: 'center',
-                                    marginLeft: 10,
-                                }]}
-                                textStyle={styles.dropdownText}
-                                dropdownStyle={[{
-                                    paddingTop: 5,
-                                    backgroundColor: 'transparent',
-                                    borderBottomColor: '#CCC',
-                                    borderColor: '#000',
-                                    width: 200,
-                                    overflow: 'scroll'
-
-                                }]}
-                                dropdownTextHighlightStyle={{fontWeight: 'bold'}}
-                                dropdownTextStyle={[{color: 'black', justifyContent: 'center', fontSize: 15}]}
-                                defaultValue={"Status"}
+                              style={[{
+                                backgroundColor:'transparent',
+                                justifyContent: 'center'
+                              }]}
+                              textStyle={[{color:'white', paddingHorizontal: 10, fontSize: 16}]}
+                              dropdownStyle={[{
+                                paddingTop: 5,
+                                backgroundColor: 'transparent',
+                                borderBottomColor: '#CCC',
+                                borderColor: '#000',
+                                width: 200,
+                              }]}
+                              dropdownTextHighlightStyle={{fontWeight: 'bold'}}
+                              dropdownTextStyle={[{color: 'black', justifyContent: 'center', fontSize: 15}]}
+                              options={['Instructor', 'Student']}
+                              defaultValue={'Role'}
                             />
                         </View>
 
@@ -269,7 +264,7 @@ let styles = StyleSheet.create({
     },
     inputsContainer: {
         flex: 3,
-        marginTop: 50,
+        marginTop: 10,
     },
     footerContainer: {
         flex: 1
@@ -288,7 +283,6 @@ let styles = StyleSheet.create({
     },
     headerTitleView: {
         backgroundColor: 'transparent',
-        marginTop: 20,
         marginLeft: 20,
     },
     titleViewText: {
