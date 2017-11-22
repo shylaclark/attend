@@ -27,7 +27,8 @@ class ListView extends Component {
         this.updateDataList = this.updateDataList.bind(this);
         this._onCompletedChange = this._onCompletedChange.bind(this);
         this.state = {
-            dataList: dataList
+            dataList: dataList,
+            navigation: this.props.navigation
         }
     }
 
@@ -44,7 +45,7 @@ class ListView extends Component {
 
     render() {
         const {navigate} = this.props.navigation;
-        let listView = (<View style={{flex: 3}}></View>);
+        let listView = (<View></View>);
         if (this.state.dataList.length) {
             listView = (
                 <SortableListView
@@ -53,7 +54,7 @@ class ListView extends Component {
                     data={this.state.dataList}
                     order={dataListOrder}
                     onRowMoved={e => moveOrderItem(this, e.from, e.to)}
-                    renderRow={(dataItem, section, index) => <ListViewItem data={dataItem} onCompletedChange={this._onCompletedChange}/>}
+                    renderRow={(dataItem, section, index) => <ListViewItem data={dataItem} navigation = {this.state.navigation} onCompletedChange={this._onCompletedChange}/>}
                 />
             );
         }
@@ -61,9 +62,9 @@ class ListView extends Component {
         return (
 
             <View style={{flex: 1, marginLeft: 10, marginRight: 10}}>
-                <Header style={{flex: 1}} title={'Courses'}></Header>
+                <Header title={'Courses'}></Header>
                 {listView}
-                <ListFooter style={{flex: 1}} navigation = {this.props.navigation} title={'Create New Course'}></ListFooter>
+                <ListFooter navigate= {navigate} navigation = {'CreateCourse'} title={'Create New Course'}></ListFooter>
             </View>
         )
     }

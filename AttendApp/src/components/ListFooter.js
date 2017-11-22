@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         backgroundColor: '#000',
         flexDirection: 'column',
-        flex: 1,
+        flex: .125,
 
     },
     button: {

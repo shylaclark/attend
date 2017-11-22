@@ -36,7 +36,7 @@ class RowLink extends Component {
                 iconStyle={{marginLeft: -10, marginRight: 0}}
                 activeOpacity={.5}
                 //borderRadius={5}
-                onPress={ ()=> this.state.navigation.navagate('AttendanceSheet')}
+                onPress={ ()=> this.state.navigation('AttendanceSheet')}
             >
             </Button>
         );
