@@ -25,7 +25,7 @@ Install REALM database library:
 ```
 npm install --save realm
 ```
-Link libraries:
+Link native dependencies:
 ```
 react-native link 
 ```
