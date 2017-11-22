@@ -44,10 +44,25 @@ Open AVD Manager in Android Studio and select green arrow to launch emulator.
 react-native run-android
 ```
 ### Troubleshooting
-If you had the app running, you may need to run:
+1. Clear watchman watches:
 ```
 watchman watch-del-all
-npm cache verify
+```
+2. Delete the node_modules folder:
+```
+rm -rf node_modules && npm install
+```
+3. Reset packager cache:
+```
+rm -fr $TMPDIR/react-*
+```
+or
+```
+npm start -- --reset-cache
+```
+4. Clean cache:
+```
+npm cache clean
 ```
 Shut down and restart Xcode and Simulator (iOS) or Android Studio and Emulator where open.
 
