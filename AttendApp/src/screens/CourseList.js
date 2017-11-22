@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 import {AppRegistry, Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import AttendanceSheet from "./AttendanceSheet";
-//import RowLink from "../components/RowLink";
 //import CreateCourse from "./CreateCourse";
 //import Header from "../components/Header";
 //import ListFooter from "../components/ListFooter";

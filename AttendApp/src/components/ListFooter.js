@@ -42,7 +42,7 @@ const ListFooter = (props) => (
         <TouchableOpacity
             activeOpacity={.5}
             style ={styles.button}
-            onPress={() => props.navigate(props.navigation) }>
+            onPress={() => props.navigation(props.nextScreen) }>
             <Text style={styles.buttonText}>{props.title}</Text>
         </TouchableOpacity>
     </View>

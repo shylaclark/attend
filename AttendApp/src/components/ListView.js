@@ -54,7 +54,7 @@ class ListView extends Component {
                     data={this.state.dataList}
                     order={dataListOrder}
                     onRowMoved={e => moveOrderItem(this, e.from, e.to)}
-                    renderRow={(dataItem, section, index) => <ListViewItem data={dataItem} navigation = {this.state.navigation} onCompletedChange={this._onCompletedChange}/>}
+                    renderRow={(dataItem, section, index) => <ListViewItem data={dataItem} navigation = {navigate} onCompletedChange={this._onCompletedChange}/>}
                 />
             );
         }
@@ -64,7 +64,7 @@ class ListView extends Component {
             <View style={{flex: 1, marginLeft: 10, marginRight: 10}}>
                 <Header title={'Courses'}></Header>
                 {listView}
-                <ListFooter navigate= {navigate} navigation = {'CreateCourse'} title={'Create New Course'}></ListFooter>
+                <ListFooter navigation= {navigate} nextScreen = {'CreateCourse'} title={'Create New Course'}></ListFooter>
             </View>
         )
     }
