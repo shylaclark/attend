@@ -100,7 +100,7 @@ export default class CreateCourse extends Component {
                     </View>
                     <View style={styles.footerContainer}>
 
-                        <TouchableOpacity onPress={ () => {this.createAccount(navigate);} }>
+                        <TouchableOpacity onPress={ () => {[navigate('CourseList'), this.createAccount(navigate)]}}>
                             <View style={styles.createcourse}>
                                 <Text style={styles.blackFont}>Create Course</Text>
                             </View>

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TextInput } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
-
+        flex: .25,
         padding: 8,
         flexDirection: 'row',
         alignItems: 'center',

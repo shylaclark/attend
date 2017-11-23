@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 import {AppRegistry, Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import AttendanceSheet from "./AttendanceSheet";
-//import RowLink from "../components/RowLink";
 //import CreateCourse from "./CreateCourse";
 //import Header from "../components/Header";
 //import ListFooter from "../components/ListFooter";
@@ -46,13 +45,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#8E8E8E',
     },
     container: {
-                flex: 1,
-                justifyContent: 'center',
-                paddingTop: 30,
-                paddingBottom: 10,
-                paddingLeft: 2,
-                paddingRight: 2,
-                backgroundColor: 'transparent',
+        flex: 1,
+        justifyContent: 'center',
+        paddingTop: 30,
+        paddingBottom: 10,
+        paddingLeft: 2,
+        paddingRight: 2,
+        backgroundColor: 'transparent',
     },
     bg: {
         paddingTop: 30,

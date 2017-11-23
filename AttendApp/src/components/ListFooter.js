@@ -8,18 +8,17 @@ import HomeScreen from "../screens/HomeScreen";
 import CreateCourse from "../screens/CreateCourse";
 const styles = StyleSheet.create({
     container: {
-        flex: 2,
         padding: 8,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: "center",
         backgroundColor: '#000',
         flexDirection: 'column',
+        flex: .125,
 
     },
     button: {
         flexDirection: 'column',
-        flex:1,
         backgroundColor: "transparent",
         borderColor: "#8E8E8E",
         borderWidth: StyleSheet.hairlineWidth,
@@ -43,7 +42,7 @@ const ListFooter = (props) => (
         <TouchableOpacity
             activeOpacity={.5}
             style ={styles.button}
-            onPress={() => props.navigate(props.navigation) }>
+            onPress={() => props.navigation(props.nextScreen) }>
             <Text style={styles.buttonText}>{props.title}</Text>
         </TouchableOpacity>
     </View>
