@@ -83,7 +83,7 @@ export default class AttendanceSheet extends Component {
                         dataSource={this.state.dataSource}
                         renderRow={(rowData) => <Text>{rowData}</Text>}
                         renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-                        renderFooter={() => <ListFooter title = {'End Roll'} navigation={'CourseList'} navigate = {navigate}/>}
+                        renderFooter={() => <ListFooter title = {'End Roll'} nextScreen={'CourseList'} navigation = {navigate}/>}
                         contentBackgroundColor={'black'}
 
                     />

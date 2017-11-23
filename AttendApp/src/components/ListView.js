@@ -7,6 +7,7 @@ import ListViewItem from './ListViewItem';
 import Utils from './Utils';
 import CourseService from './CourseService';
 import Header from './Header';
+import ListFooter from './ListFooter';
 
 let dataList = CourseService.findAll();
 var dataListOrder = getOrder(dataList);
@@ -26,7 +27,8 @@ class ListView extends Component {
         this.updateDataList = this.updateDataList.bind(this);
         this._onCompletedChange = this._onCompletedChange.bind(this);
         this.state = {
-            dataList: dataList
+            dataList: dataList,
+            navigation: this.props.navigation
         }
     }
 
@@ -42,16 +44,17 @@ class ListView extends Component {
     }
 
     render() {
+        const {navigate} = this.props.navigation;
         let listView = (<View></View>);
         if (this.state.dataList.length) {
             listView = (
                 <SortableListView
                     ref='listView'
-                    style={{flex: 1}}
+                    style={{flex: 3}}
                     data={this.state.dataList}
                     order={dataListOrder}
                     onRowMoved={e => moveOrderItem(this, e.from, e.to)}
-                    renderRow={(dataItem, section, index) => <ListViewItem data={dataItem} onCompletedChange={this._onCompletedChange}/>}
+                    renderRow={(dataItem, section, index) => <ListViewItem data={dataItem} navigation = {navigate} onCompletedChange={this._onCompletedChange}/>}
                 />
             );
         }
@@ -61,6 +64,7 @@ class ListView extends Component {
             <View style={{flex: 1, marginLeft: 10, marginRight: 10}}>
                 <Header title={'Courses'}></Header>
                 {listView}
+                <ListFooter navigation= {navigate} nextScreen = {'CreateCourse'} title={'Create New Course'}></ListFooter>
             </View>
         )
     }
