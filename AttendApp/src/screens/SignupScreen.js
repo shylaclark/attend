@@ -21,6 +21,7 @@ const emailIcon = require("../img/email.png");
 const wifiIcon = require("../img/mac_address.png");
 
 const Realm = require('realm');
+const UserService =  require("../components/UserService.js");
 
 export default class SignupScreen extends Component {
 
@@ -38,55 +39,19 @@ export default class SignupScreen extends Component {
     }
 
     createAccount = (navigate) => {
-        const { firstName, lastName, email, macAddress, password, confirmPassword } = this.state
-        // console.log('firstName', firstName);
-        // console.log('lastName', lastName);
-        // console.log('email', email);
-        // console.log('macAddress', macAddress);
-        // console.log('password', password);
-        // console.log('confirmPassword', confirmPassword);
+        const userSignUp = this.state
 
-        Realm.open({
-            schema: [
-                {
-                    name: 'User',
-                    properties: {
-                        firstName: 'string',
-                        lastName: 'string',
-                        macAddress: 'string',
-                        email: 'string',
-                        password: 'string'
-                    }
-                }
-            ]
-        }).then(realm => {
+				let existingUser = UserService.findAll().some(function(user) {
+						return user.email === userSignUp.email;
+				});
 
-					let existingUser = realm.objects('User').some(function(user) {
-							return user.email === email;
-					});
-
-					if (existingUser) {
-						alert("This email has been used already. Please enter a different email address.");
-					} else {
-                        try {
-                            realm.write(() => {
-                                    realm.create('User',
-                                            {
-                                                    firstName: firstName,
-                                                    lastName: lastName,
-                                                    macAddress: macAddress,
-                                                    email: email,
-                                                    password: password
-                                            }
-                                    );
-                            });
-                        } catch (e) {
-                            console.log("Error on creation");
-                        }
-
-						navigate('Login');
-					}
-        });
+				if (existingUser) {
+					alert("This email has been used already. Please enter a different email address.");
+				} else {
+          
+          UserService.save(userSignUp);
+					navigate('Login');
+				}
     };
 
     render() {
