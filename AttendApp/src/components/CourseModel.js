@@ -4,11 +4,11 @@ class CourseModel {
     constructor(courseDepartment, courseNumber, courseSection, courseTitle, instructor, active) {
         this.id = Utils.guid();
         this.courseDepartment = courseDepartment;
-        this.courseNumber = courseNumber;
+        this.courseNumber = parseInt(courseNumber);
         this.courseTitle = courseTitle ;
-        this.courseSection = courseSection || '0000';
+        this.courseSection = parseInt(courseSection) || 0;
         this.active = active || true;
-        this.instructor = instructor;
+        this.instructor = instructor || ' ';
         this.createdAt = new Date();
         this.updatedAt = new Date();
     }

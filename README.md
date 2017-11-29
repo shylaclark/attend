@@ -17,13 +17,9 @@ Change directory to project root:
 ```
 cd attend/AttendApp
 ```
-Install libraries:
+Install dependencies:
 ```
-npm install --save
-```
-Install REALM database library:
-```
-npm install --save realm
+npm install
 ```
 Link native dependencies:
 ```
@@ -48,9 +44,9 @@ react-native run-android
 ```
 watchman watch-del-all
 ```
-2. Delete the node_modules folder:
+2. Clean node_modules folder:
 ```
-rm -rf node_modules && npm install
+rm -rf --cache node_modules
 ```
 3. Reset packager cache:
 ```
@@ -78,15 +74,15 @@ Shut down and restart Xcode and Simulator (iOS) or Android Studio and Emulator w
 
 ### Agile
 
-* Planning: CA Agile (Rally)
-* Continuous Integration: Bitrise
-* Unit Testing: Jest
+* Planning: [CA Agile (Rally)](https://rally1.rallydev.com)
+* Continuous Integration: [Bitrise](https://bitrise.io)
+* Unit Testing: [Jest](https://facebook.github.io/jest/)
 
 ### Development
 
-* UI Framework: React Native
+* UI Framework: [React Native](https://facebook.github.io/react-native/)
 * Languages: JavaScript, Swift/Objective-C, Java
-* IDE: WebStorm
+* IDE: [WebStorm](https://www.jetbrains.com/webstorm/)
 * Emulators: Android Studio (Android), Xcode (iOS)
 * Build Tools: Gradle (Android), xcodebuild (iOS)
 
