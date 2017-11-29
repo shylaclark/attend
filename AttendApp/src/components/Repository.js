@@ -14,11 +14,20 @@ User.schema = {
 
 class Course extends Realm.Object {}
 Course.schema = {
-  name: 'Course',
-  properties: {
-    courseName: 'string',
-    courseDescription: 'string'
-  }
+
+    name: 'Course',
+    primaryKey: 'id',
+    properties: {
+        id: {type: 'string', indexed: true},
+        courseDepartment: 'string',
+        courseNumber: 'int',
+        courseTitle: 'string',
+        courseSection: 'int',
+        instructor: 'string',
+        active: 'bool',
+        createdAt: 'date',
+        updatedAt: 'date'
+    }
 };
 
 export default new Realm({schema: [User, Course]});
