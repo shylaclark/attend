@@ -7,7 +7,7 @@ import {
     TextInput,
     TouchableOpacity,
 } from 'react-native'
-
+import CourseCreator from '../components/CourseCreator';
 const background = require("../img/background.png");
 
 const Realm = require('realm');
@@ -64,51 +64,14 @@ export default class CreateCourse extends Component {
 
     render() {
         const {navigate} = this.props.navigation;
-
         return (
-            <View style={styles.container}>
-                <Image
-                    source={background}
-                    style={[styles.container, styles.bg]}
-                    resizeMode="cover"
-                >
-                    <View style={styles.headerContainer}>
-                        <View style={styles.headerTitleView}>
-                            <Text style={styles.titleViewText}>Create Course</Text>
-                        </View>
-                    </View>
+            <Image source={background} style={styles.background} resizeMode="cover">
 
-                    <View style={styles.inputsContainer}>
-                        <View style={styles.inputContainer}>
-                            <TextInput
-                                onChangeText={this.updateFormField('courseName')}
-                                style={[styles.input, styles.whiteFont]}
-                                placeholder="Course Name"
-                                placeholderTextColor="#FFF"
-                                underlineColorAndroid='transparent'
-                            />
-                        </View>
-                        <View style={styles.inputContainer}>
-                            <TextInput
-                                onChangeText={this.updateFormField('courseDescription')}
-                                style={[styles.input, styles.whiteFont]}
-                                placeholder="Course Description"
-                                placeholderTextColor="#FFF"
-                                underlineColorAndroid='transparent'
-                            />
-                        </View>
-                    </View>
-                    <View style={styles.footerContainer}>
+                <View style={styles.container}>
+                    <CourseCreator navigation = {this.props.navigation}></CourseCreator>
+                </View>
+            </Image>
 
-                        <TouchableOpacity onPress={ () => {[navigate('CourseList'), this.createAccount(navigate)]}}>
-                            <View style={styles.createcourse}>
-                                <Text style={styles.blackFont}>Create Course</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-
-                </Image>
-            </View>
         )
     }
 }
@@ -121,6 +84,12 @@ let styles = StyleSheet.create({
         paddingTop: 30,
         width: null,
         height: null
+    },
+    background: {
+        height: '100%',
+        width: '100%',
+        justifyContent: 'center',           // Center vertically
+        alignItems: 'center',
     },
     headerContainer: {
         flex: 1,

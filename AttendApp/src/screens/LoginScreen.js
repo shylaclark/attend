@@ -75,7 +75,7 @@ export default class LoginScreen extends Component {
                         onChangeText={this.updateFormField('username')}
                         placeholder="Username"
                         placeholderTextColor="#FFF"
-                        style={styles.input}
+
                     />
                   </View>
                   <View style={styles.inputWrap}>

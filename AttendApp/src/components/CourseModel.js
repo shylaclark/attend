@@ -8,7 +8,7 @@ class CourseModel {
         this.courseTitle = courseTitle ;
         this.courseSection = courseSection || '0000';
         this.active = active || true;
-        this.instructor = instructor;
+        this.instructor = instructor || null;
         this.createdAt = new Date();
         this.updatedAt = new Date();
     }
