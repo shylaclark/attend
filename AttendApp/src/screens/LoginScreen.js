@@ -17,6 +17,7 @@ const lockIcon = require("../img/lock.png");
 const personIcon = require("../img/person.png");
 
 const Realm = require('realm');
+const UserService = require('../components/UserService.js');
 
 export default class LoginScreen extends Component {
 
@@ -32,28 +33,13 @@ export default class LoginScreen extends Component {
     authenticate = (navigate) => {
         const { username, password } = this.state
 
-        Realm.open({
-            schema: [
-                {
-                    name: 'User',
-                    properties: {
-                        firstName: 'string',
-                        lastName: 'string',
-                        email: 'string',
-                        macAddress: 'string',
-                        password: 'string'
-                    }
-                }
-            ]
-        }).then(realm => {
-            let validUser = realm.objects('User').some(function(user) {
-                return user.email === username && user.password === password;
-            });
-						if (validUser) {
-							navigate('Home');
-						}
-            console.log('is valid user', validUser);
+        let validUser = UserService.findAll().some(function(user) {
+            return user.email === username && user.password === password;
         });
+				if (validUser) {
+					navigate('CourseList');
+				}
+        console.log('is valid user', validUser);
     };
 
     render() {

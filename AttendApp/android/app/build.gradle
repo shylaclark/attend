@@ -91,11 +91,11 @@ def enableProguardInReleaseBuilds = false
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '25.0.0'
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         applicationId "com.attendapp"
-        minSdkVersion 18
+        minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
