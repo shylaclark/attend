@@ -17,13 +17,9 @@ Change directory to project root:
 ```
 cd attend/AttendApp
 ```
-Install libraries:
+Install dependencies:
 ```
-npm install --save
-```
-Install REALM database library:
-```
-npm install --save realm
+npm install
 ```
 Link native dependencies:
 ```
