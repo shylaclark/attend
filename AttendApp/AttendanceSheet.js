@@ -75,6 +75,7 @@ export default class AttendanceSheet extends Component {
         </View>
         </TouchableOpacity>
         <TouchableOpacity activeOpacity={.5} onPress={ ()=> navigate('CourseList') }>
+
     <View style={styles.button}>
     <Text style={styles.buttonText}>End Attendance</Text>
         </View>
@@ -83,8 +84,9 @@ export default class AttendanceSheet extends Component {
 
         automaticallyAdjustContentInsets={false}
         dataSource={this.state.dataSource}
-        renderRow={(rowData)
-            </View>
+        renderRow={(rowData)}>
+        </ListView>
+        </View>
             <View style={styles.footerContainer}>
 
     </View>

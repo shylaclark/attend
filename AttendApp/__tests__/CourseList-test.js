@@ -1,6 +1,6 @@
 import 'react-native';
 import React from 'react';
-import LoginScreen from '../LoginScreen';
+import CourseList from '../CourseList';
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';

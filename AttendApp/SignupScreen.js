@@ -143,9 +143,9 @@ render() {
     style={styles.inputIcon}
     resizeMode="contain"
         />
-        </View>
+</View>
         <ModalDropdown
-    options={['Instructor',
+    options={['Instructor']}/>
         </View>
 
         <View style={styles.inputContainer}>

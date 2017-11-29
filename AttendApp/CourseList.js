@@ -39,7 +39,7 @@ export default class CourseList extends Component{
 
     renderRow(course, sectionId, rowId, highlightRow){
         return(
-            <RowLink navigation={this.props.navigation} title={course.name}/></RowLink>
+            <RowLink navigation={this.props.navigation} title={course.name}></RowLink>
     )
     }
 
@@ -107,11 +107,14 @@ export default class CourseList extends Component{
         renderRow={this.renderRow.bind(this)}
         renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
         renderHeader={() => <Header title={'Courses'} />}
-        renderFooter={() => <ListFooter title = {'Create New Course}
+        renderFooter={() => <ListFooter title = {'Create New Course'}/>}
             renderSectionHeader={(sectionData) => <SectionHeader {...sectionData} />}
         contentBackgroundColor={'black'}
+            >
+            </ListView>
 
-        /></ListView>
+
+
 
         </Image>
     );
