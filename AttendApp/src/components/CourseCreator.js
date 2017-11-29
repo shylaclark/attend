@@ -30,7 +30,8 @@ class CourseCreator extends Component {
     // }
 
     onKeyPress(){
-      console.log(this)
+      console.log(this);
+
       console.log('onKeyPress');
       //  if (this.state.newValue) {
             var newDataItem = new CourseModel(this.state.courseDepartment, this.state.courseNumber, this.state.courseSection, this.state.courseTitle, null, true);
