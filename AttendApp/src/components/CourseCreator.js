@@ -9,39 +9,56 @@ import ListFooter from './ListFooter';
 class CourseCreator extends Component {
     constructor(props) {
         super(props);
-        this.onKeyPress = this.onKeyPress.bind(this);
+        // this.onKeyPress = this.onKeyPress.bind(this);
     }
 
-    componentWillMount() {
-        this.setState({
-            newValue: ''
-        });
+    state = {
+      courseDepartment: '',
+      courseNumber: '',
+      courseSection: '',
+      courseTitle: ''
     }
+
+    updateFormField = fieldName => text => {
+        this.setState({ [fieldName]: text })
+    }
+
+    // componentWillMount() {
+    //     this.setState({
+    //         newValue: ''
+    //     });
+    // }
 
     onKeyPress(){
-        if (this.state.newValue) {
-            var newDataItem = new CourseModel(this.state.newValue);
+      console.log(this)
+      console.log('onKeyPress');
+      //  if (this.state.newValue) {
+            var newDataItem = new CourseModel(this.state.courseDepartment, this.state.courseNumber, this.state.courseSection, this.state.courseTitle, null, true);
+            console.log(newDataItem);
 
-            var dataList = this.props.data;
-            var dataItem = Utils.findCourse(newDataItem, dataList);
-            if(dataItem) {
-                Utils.move(dataList, (dataList.indexOf(dataItem)), 0);
+            // var dataList = this.props.data;
+            // var dataItem = Utils.findCourse(newDataItem, dataList);
+            // if(dataItem) {
+            //     Utils.move(dataList, (dataList.indexOf(dataItem)), 0);
+            //
+            //     this.setState({
+            //         newValue: ''
+            //     });
+            //     this.props.updateDataList(dataList);
+            //     return;
+            // }
 
-                this.setState({
-                    newValue: ''
-                });
-                this.props.updateDataList(dataList);
-                return;
-            }
-
-            dataList.unshift(newDataItem);
+            // dataList.unshift(newDataItem);
             CourseService.save(newDataItem);
 
             this.setState({
-                newValue: ''
+              courseDepartment: '',
+              courseNumber: '',
+              courseSection: '',
+              courseTitle: ''
             });
-            this.props.updateDataList(dataList);
-        }
+            // this.props.updateDataList(dataList);
+        // }
     }
     //this.id = Utils.guid();
     //this.courseDepartment = courseDepartment;
@@ -62,28 +79,32 @@ class CourseCreator extends Component {
                                    placeholder='Department Code'
                                    placeholderTextColor='#FFF'
                                    blurOnSubmit={false}
-                                   value={this.state.newValue.courseDepartment}>
+                                   onChangeText={this.updateFormField('courseDepartment')}
+                                   value={this.state.courseDepartment}>
                         </TextInput>
                         <TextInput style={{height: 36, padding: 4, marginBottom: 0, fontSize: 16, borderWidth: 1, borderColor: '#CCC', borderRadius: 8, backgroundColor: '#000', color: '#FFF'}}
                                    placeholder='Course Number'
                                    placeholderTextColor='#FFF'
                                    blurOnSubmit={false}
-                                   value={this.state.newValue.courseNumber}>
+                                   onChangeText={this.updateFormField('courseNumber')}
+                                   value={this.state.courseNumber}>
                         </TextInput>
                         <TextInput style={{height: 36, padding: 4, marginBottom: 0, fontSize: 16, borderWidth: 1, borderColor: '#CCC', borderRadius: 8, backgroundColor: '#000', color: '#FFF'}}
                                    placeholder='Course Section'
                                    placeholderTextColor='#FFF'
                                    blurOnSubmit={false}
-                                   value={this.state.newValue.courseSection}>
+                                   onChangeText={this.updateFormField('courseSection')}
+                                   value={this.state.courseSection}>
 
                         </TextInput>
                         <TextInput style={{height: 36, padding: 4, marginBottom: 0, fontSize: 16, borderWidth: 1, borderColor: '#CCC', borderRadius: 8, backgroundColor: '#000', color: '#FFF'}}
                                    placeholder='Course Title'
                                    placeholderTextColor='#FFF'
                                    blurOnSubmit={false}
-                                   value={this.state.newValue.courseTitle}>
+                                   onChangeText={this.updateFormField('courseTitle')}
+                                   value={this.state.courseTitle}>
                         </TextInput>
-                    <TouchableOpacity onKeyPress={() => this.onKeyPress}>
+                    <TouchableOpacity onPress={() => this.onKeyPress()}>
                         <View style={styles.createcourse}>
                             <Text style={styles.blackFont}>Create Course</Text>
                         </View>
