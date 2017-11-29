@@ -40,6 +40,10 @@ export default class LoginScreen extends Component {
 					navigate('CourseList');
 				}
         console.log('is valid user', validUser);
+
+        if(!validUser){
+          alert("Invalid user or password. Enter valid user and password");
+      }
     };
 
     render() {
