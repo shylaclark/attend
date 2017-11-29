@@ -78,15 +78,15 @@ Shut down and restart Xcode and Simulator (iOS) or Android Studio and Emulator w
 
 ### Agile
 
-* Planning: CA Agile (Rally)
-* Continuous Integration: Bitrise
-* Unit Testing: Jest
+* Planning: [CA Agile (Rally)](https://rally1.rallydev.com)
+* Continuous Integration: [Bitrise](https://bitrise.io)
+* Unit Testing: [Jest](https://facebook.github.io/jest/)
 
 ### Development
 
-* UI Framework: React Native
+* UI Framework: [React Native](https://facebook.github.io/react-native/)
 * Languages: JavaScript, Swift/Objective-C, Java
-* IDE: WebStorm
+* IDE: [WebStorm](https://www.jetbrains.com/webstorm/)
 * Emulators: Android Studio (Android), Xcode (iOS)
 * Build Tools: Gradle (Android), xcodebuild (iOS)
 
