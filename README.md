@@ -48,9 +48,9 @@ react-native run-android
 ```
 watchman watch-del-all
 ```
-2. Delete the node_modules folder:
+2. Clean node_modules folder:
 ```
-rm -rf node_modules && npm install
+rm -rf --cache node_modules
 ```
 3. Reset packager cache:
 ```
