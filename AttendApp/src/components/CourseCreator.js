@@ -5,7 +5,8 @@ import CourseService from './CourseService';
 import Utils from './Utils';
 import Header from './Header';
 import ListFooter from './ListFooter';
-class CreateCourse2 extends Component {
+
+class CourseCreator extends Component {
     constructor(props) {
         super(props);
         this.onKeyPress = this.onKeyPress.bind(this);
@@ -190,4 +191,4 @@ let styles = StyleSheet.create({
         color: '#FFF'
     }
 });
-module.exports = CreateCourse2;
+module.exports = CourseCreator;

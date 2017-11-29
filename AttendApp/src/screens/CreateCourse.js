@@ -11,6 +11,7 @@ import CourseCreator from '../components/CourseCreator';
 const background = require("../img/background.png");
 
 const Realm = require('realm');
+const CourseService = require('../components/CourseService.js');
 
 export default class CreateCourse extends Component {
 
@@ -24,41 +25,10 @@ export default class CreateCourse extends Component {
     };
 
     createAccount = (navigate) => {
-        const { courseName, courseDescription } = this.state;
-        // console.log('firstName', firstName);
-        // console.log('lastName', lastName);
-        // console.log('email', email);
-        // console.log('macAddress', macAddress);
-        // console.log('password', password);
-        // console.log('confirmPassword', confirmPassword);
+      const course = this.state;
 
-        Realm.open({
-            schema: [
-                {
-                    name: 'Course',
-                    properties: {
-                        courseName: 'string',
-                        courseDescription: 'string'
-                    }
-                }
-            ]
-        }).then(realm => {
-            try {
-                realm.write(() => {
-                    realm.create('Course',
-                        {
-                            courseName: courseName,
-                            courseDescription: courseDescription
-                        }
-                    );
-                });
-            } catch (e) {
-                console.log("Error on creation");
-            }
-
-            navigate('CourseList');
-
-        });
+      CourseService.save(course);
+      navigate('CourseList');
     };
 
 
