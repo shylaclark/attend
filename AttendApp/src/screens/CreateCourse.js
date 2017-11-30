@@ -49,6 +49,8 @@ export default class CreateCourse extends Component {
 let styles = StyleSheet.create({
     container: {
         flex: 1,
+        marginRight: 10,
+        marginLeft:10
     },
     bg: {
         paddingTop: 30,
@@ -90,10 +92,6 @@ let styles = StyleSheet.create({
     },
     titleViewText: {
         fontSize: 40,
-        color: '#fff',
-    },
-    dropdownText: {
-        fontSize: 17,
         color: '#fff',
     },
     inputs: {
