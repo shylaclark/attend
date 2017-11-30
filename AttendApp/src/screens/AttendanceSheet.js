@@ -15,6 +15,8 @@ import SectionHeader from "../components/SectionHeader";
 
 const background = require("../img/background.png");
 
+
+
 export default class AttendanceSheet extends Component {
     constructor(props){
         super(props);
@@ -56,40 +58,51 @@ export default class AttendanceSheet extends Component {
 
     render() {
 
-        const {navigate} = this.props.navigation;
+        //const {navigate} = this.props.navigation;
 
         return (
+          <View style={{padding: 50}}>
+            <Text>Bluetooth scanner</Teaxt>
+            <Button onPress={() => this.startScanning()} title="Start scanning"/>
 
-            <Image
-                source={background}
-                style={[styles.container, styles.background, styles.bg]}
-                resizeMode="cover"
-            >
-                <View style={styles.container2}>
-                    <View style={styles.headerTitleView}>
-                        <Text style={styles.titleViewText}>Attendance</Text>
-                    </View>
-                </View>
-                <View style={styles.container3}>
-                    <TouchableOpacity activeOpacity={.5} onPress={ () => this.startScanning() }>
-                        <View style={styles.button}>
-                            <Text style={styles.buttonText}>Take Roll</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <ListView
+          <ListView
+            dataSource={this.state.dataSource}
+            renderRow={(rowData) => <Text>{rowData}</Text>}
+            />
 
-                        style={styles.container}
-                        automaticallyAdjustContentInsets={false}
-                        dataSource={this.state.dataSource}
-                        renderRow={(rowData) => <Text style={styles.whiteFont}>{rowData}</Text>}
-                        renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-                        renderFooter={() => <ListFooter title = {'End Roll'} nextScreen={'CourseList'} navigation = {navigate}/>}
-                        contentBackgroundColor={'black'}
+        </View>
 
-                    />
-                </View>
 
-            </Image>
+            // <Image
+            //     source={background}
+            //     style={[styles.container, styles.background, styles.bg]}
+            //     resizeMode="cover"
+            // >
+            //     <View style={styles.container2}>
+            //         <View style={styles.headerTitleView}>
+            //             <Text style={styles.titleViewText}>Attendance</Text>
+            //         </View>
+            //     </View>
+            //     <View style={styles.container3}>
+            //         <TouchableOpacity activeOpacity={.5} onPress={ () => this.startScanning() }>
+            //             <View style={styles.button}>
+            //                 <Text style={styles.buttonText}>Take Roll</Text>
+            //             </View>
+            //         </TouchableOpacity>
+            //         <ListView
+            //
+            //             style={styles.container}
+            //             automaticallyAdjustContentInsets={false}
+            //             dataSource={this.state.dataSource}
+            //             renderRow={(rowData) => <Text style= {color='#fff'}>{rowData}  </Text>}
+            //             renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+            //             renderFooter={() => <ListFooter title = {'End Roll'} nextScreen={'CourseList'} navigation = {navigate}/>}
+            //             contentBackgroundColor={'black'}
+            //
+            //         />
+            //     </View>
+            //
+            // </Image>
         );
     }
 }
@@ -175,3 +188,4 @@ const styles = StyleSheet.create({
     }
 });
 
+AppRegistry.registerComponent('Bluetooth', ()=> BluetoothScanner);
