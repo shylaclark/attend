@@ -12,7 +12,9 @@ import BleManager from 'react-native-ble-manager';
 import Header from "../components/Header";
 import ListFooter from "../components/ListFooter";
 import SectionHeader from "../components/SectionHeader";
+import StudentService from "../components/Students/StudentService";
 
+// const StudentService = require('../components/Students/StudentService.js');
 const background = require("../img/background.png");
 
 export default class AttendanceSheet extends Component {
@@ -21,9 +23,19 @@ export default class AttendanceSheet extends Component {
 
         const dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.devices = [];
+        this.studentNames = [];
         this.state = {
-            dataSource: dataSource.cloneWithRows(this.devices)
+            dataSource: dataSource.cloneWithRows(this.devices),
+            data: this.props.data,
+            navigation: this.props.navigation,
+            student:this.props.students.enrolledStudent.name
         };
+    }
+    componentWillReceiveProps(props) {
+        this.setState({
+            data: props.data,
+            navigation: props.navigation
+        })
     }
 
     componentDidMount() {
@@ -31,15 +43,28 @@ export default class AttendanceSheet extends Component {
 
         NativeAppEventEmitter.addListener('BleManagerDiscoverPeripheral',(data) =>
         {
-            let device = 'device found: ' + data.name + '(' + data.id + ')';
+            let device =  data.id;
 
             if(this.devices.indexOf(device) == -1) {
                 this.devices.push(device);
             }
 
+            let student= StudentService.findAll();
+            let theStudent = Students.filtered('macAdderss = '+ device );
+            console.log(theStudent);
+
             let newState = this.state;
-            newState.dataSource = newState.dataSource.cloneWithRows(this.devices);
-            this.setState(newState);
+            if(theStudent != null){
+
+                this.studentNames.push(theStudent);
+                newState.dataSource = newState.dataSource.cloneWithRows(this.studentNames);
+                this.setState(newState);
+
+            }
+            else {
+                newState.dataSource = newState.dataSource.cloneWithRows(this.devices);
+                this.setState(newState);
+            }
         });
 
         BleManager.start({showAlert: false})

@@ -3,16 +3,16 @@ import React, {Component} from 'react';
 import {AppRegistry, Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import AttendanceSheet from "./AttendanceSheet";
 //import CreateCourse from "./CreateCourse";
-import Header from "attend/AttendApp/src/components/Header.js";
+//import Header from "../components/Header";
 //import ListFooter from "../components/ListFooter";
 //import SectionHeader from "../components/SectionHeader";
-import ListView from '../components/Courses/ListView';
+import sListView from '../components/Students/sListView';
 //import { ListView } from 'realm/react-native';
-
+import CreatStudent from './CreateStudent';
 
 const background = require("../img/background.png");
 
-export default class CourseList extends Component{
+export default class StudentList extends Component{
 
     render(){
         const { navigate } = this.props.navigation;
@@ -20,9 +20,10 @@ export default class CourseList extends Component{
             <Image source={background} style={styles.background} resizeMode="cover">
 
                 <View style={styles.container}>
-                    <Header title={'Courses'}></Header>
-                    <ListView></ListView>
-                    <ListFooter navigation= {navigate} nextScreen = {'CreateCourse'} title={'Create New Course'}></ListFooter>
+                    <Header title={'Students'}></Header>
+                    <sListView></sListView>
+                    <ListFooter navigation= {navigate} nextScreen = {'CreateStudent'} title={'Create New Student'}></ListFooter>
+
                 </View>
             </Image>
         );

@@ -11,7 +11,7 @@ import CourseCreator from '../components/Courses/CourseCreator';
 const background = require("../img/background.png");
 
 const Realm = require('realm');
-const CourseService = require('../components/Courses/CourseService.js');
+const StudentService = require('../components/Students/StudentService.js');
 
 export default class CreateCourse extends Component {
 
@@ -25,10 +25,10 @@ export default class CreateCourse extends Component {
     };
 
     createAccount = (navigate) => {
-      const course = this.state;
+        const student = this.state;
 
-      CourseService.save(course);
-      navigate('CourseList');
+        CourseService.save(student);
+        navigate('StudentList');
     };
 
 
@@ -38,7 +38,7 @@ export default class CreateCourse extends Component {
             <Image source={background} style={styles.background} resizeMode="cover">
 
                 <View style={styles.container}>
-                    <CourseCreator navigation = {this.props.navigation}></CourseCreator>
+                    <StudentCreator navigation = {this.props.navigation}></StudentCreator>
                 </View>
             </Image>
 

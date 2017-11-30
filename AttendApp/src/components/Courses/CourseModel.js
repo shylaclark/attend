@@ -1,4 +1,4 @@
-import Utils from './Utils';
+import Utils from '../Utils';
 
 class CourseModel {
     constructor(courseDepartment, courseNumber, courseSection, courseTitle, instructor, active) {

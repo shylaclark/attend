@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {Text, View, TouchableOpacity, TouchableHighlight, StyleSheet} from 'react-native';
-import CourseService from './CourseService';
-import AttendanceSheet from "../screens/AttendanceSheet";
+//import CourseService from './CourseService';
+//import AttendanceSheet from "../../screens/AttendanceSheet";
 
 //export default
-class ListViewItem extends Component{
+class ListViewCourse extends Component{
     constructor(props)
     {
         super(props);
@@ -23,26 +23,7 @@ class ListViewItem extends Component{
         })
     }
 
-    //onRowLinkPressed() {
-        //var data = this.state.data;
-    //    let {navigate} = this.props.navigation;
-    //    <View>
-            //    <TouchableOpacity activeOpacity={.5} onPress={ ()=> navigate('AttendanceSheet') }>
-            //        <View style={styles.inputContainer}>
-            //            <Text style={styles.whiteFont}>{this.props.title}</Text>
-            //        </View>
-            //    </TouchableOpacity>
-    //        </View>
 
-    //    CourseService.update(data, () => {
-    //        data.completed = !data.completed
-    //        this.setState({
-    //            data: data
-    //        });
-
-     //       this.props.onActiveChange();
-
-       // }
         render(){
             const {navigate} = this.props.navigation;
             let data = this.state.data;
@@ -51,7 +32,7 @@ class ListViewItem extends Component{
             return(
                 <TouchableOpacity
                     activeOpacity={.5}
-                    onPress={ ()=> this.props.navigation('AttendanceSheet')}
+                    onPress={ ()=> this.props.navigation('CourseList')}
                     style={{
                         paddingTop: 6,
                         paddingBottom: 6,
@@ -95,5 +76,5 @@ let styles = StyleSheet.create({
     }
 });
 
-    module.exports = ListViewItem;
+    module.exports = ListViewCourse;
 //onPress={ ()=> navigate('AttendanceSheet')}

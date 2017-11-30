@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import { TextInput, StyleSheet, View, TouchableOpacity, Text } from 'react-native';
-import CourseModel from './CourseModel';
-import CourseService from './CourseService';
-import Utils from './Utils';
-import Header from './Header';
-import ListFooter from './ListFooter';
+import StudentModel from '../Students/StudentModel';
+import StudentService from '../Students/StudentsService';
+import Utils from '../Utils';
+import Header from '../Header';
+import ListFooter from '../ListFooter';
 
-class CourseCreator extends Component {
+class StudentCreator extends Component {
     constructor(props) {
         super(props);
         // this.onKeyPress = this.onKeyPress.bind(this);
     }
 
     state = {
-      courseDepartment: '',
-      courseNumber: '',
-      courseSection: '',
-      courseTitle: ''
+        studentID: ' ',
+        sFirstName: ' ',
+        sLastName: ' ',
+        sEmail: ' ',
+        macAddress: ' ',
     }
 
     updateFormField = fieldName => text => {
@@ -28,82 +29,88 @@ class CourseCreator extends Component {
     //         newValue: ''
     //     });
     // }
+    createAccount = (navigate) => {
+        const addStudent = this.state
 
+        let existingStudent = StudentService.findAll().some(function(student) {
+            return student.studentID === addStudent.studentID;
+        });
+
+        if (existingUser) {
+            alert("This ID has been used already. Please enter a different studentID.");
+        } else {
+
+            UserService.save(addStudent);
+            navigate('StudentList');
+        }
+    };
     onKeyPress(){
-      console.log(this);
+        console.log(this);
 
-      console.log('onKeyPress');
-      //  if (this.state.newValue) {
-            var newDataItem = new CourseModel(this.state.courseDepartment, this.state.courseNumber, this.state.courseSection, this.state.courseTitle, null, true);
+        console.log('onKeyPress');
+        const addStudent = this.state
+        let existingStudent = StudentService.findAll().some(function(student) {
+            return student.studentID === addStudent.studentID;
+        });
+        if (existingUser) {
+            alert("This ID has been used already. Please enter a different studentID.");
+        } else {
+
+            var newDataItem = new StudentModel(this.state.studentID, this.state.sFirstName, this.state.sLastName, this.state.sEmail, this.state.sMacAddress);
             console.log(newDataItem);
 
-            // var dataList = this.props.data;
-            // var dataItem = Utils.findCourse(newDataItem, dataList);
-            // if(dataItem) {
-            //     Utils.move(dataList, (dataList.indexOf(dataItem)), 0);
-            //
-            //     this.setState({
-            //         newValue: ''
-            //     });
-            //     this.props.updateDataList(dataList);
-            //     return;
-            // }
-
-            // dataList.unshift(newDataItem);
-            CourseService.save(newDataItem);
+            StudentService.save(newDataItem);
 
             this.setState({
-              courseDepartment: '',
-              courseNumber: '',
-              courseSection: '',
-              courseTitle: ''
+                studentID: ' ',
+                sFirstName: ' ',
+                sLastName: ' ',
+                sEmail: ' ',
+                sMacAddress: ' ',
             });
-            // this.props.updateDataList(dataList);
-        // }
+        }
     }
-    //this.id = Utils.guid();
-    //this.courseDepartment = courseDepartment;
-    //this.courseNumber = courseNumber;
-    //this.courseTitle = courseTitle ;
-    //this.courseSection = courseSection || '0000';
-    //this.active = active || true;
-    //this.instructor = instructor;
-    //this.createdAt = new Date();
-    //this.updatedAt = new Date();
+
     render() {
         const {navigate} = this.props.navigation;
         return (
             <View style={styles.inputsContainer}>
-                <Header title={'Create Course'}></Header>
+                <Header title={'Create Students'}></Header>
                 < View styl={styles.inputsContainer}>
                     <TextInput style={[styles.inputContainer, {fontSize: 16, backgroundColor: '#000', color: "#FFF"}]}
-                               placeholder='Department Code'
+                               placeholder='Student ID'
                                placeholderTextColor='#FFF'
                                blurOnSubmit={false}
-                               onChangeText={this.updateFormField('courseDepartment')}
-                               value={this.state.courseDepartment}>
+                               onChangeText={this.updateFormField('studentID')}
+                               value={this.state.studentID}>
                     </TextInput>
                     <TextInput style={[styles.inputContainer, {fontSize: 16, backgroundColor: '#000', color: "#FFF"}]}
-                               placeholder='Course Number'
-                               placeholderTextColor='#FFF'
+                               placeholder='First Name'
                                blurOnSubmit={false}
-                               onChangeText={this.updateFormField('courseNumber')}
-                               value={this.state.courseNumber}>
+                               onChangeText={this.updateFormField('sFirstName')}
+                               value={this.state.sFirstName}>
                     </TextInput>
                     <TextInput style={[styles.inputContainer, {fontSize: 16, backgroundColor: '#000', color: "#FFF"}]}
-                               placeholder='Course Section'
+                               placeholder='Last Name'
                                placeholderTextColor='#FFF'
                                blurOnSubmit={false}
-                               onChangeText={this.updateFormField('courseSection')}
-                               value={this.state.courseSection}>
+                               onChangeText={this.updateFormField('sLastName')}
+                               value={this.state.sLastName}>
 
                     </TextInput>
                     <TextInput style={[ styles.inputContainer, {fontSize: 16, backgroundColor: '#000', color: "#FFF"}]}
-                               placeholder='Course Title'
+                               placeholder='Email'
                                placeholderTextColor='#FFF'
                                blurOnSubmit={false}
-                               onChangeText={this.updateFormField('courseTitle')}
-                               value={this.state.courseTitle}>
+                               onChangeText={this.updateFormField('sEmail')}
+                               value={this.state.sEmail}>
+                    </TextInput>
+                    <TextInput style={[ styles.inputContainer, {fontSize: 16, backgroundColor: '#000', color: "#FFF"}]}
+                               placeholder='MAC address'
+                               placeholderTextColor='#FFF'
+                               blurOnSubmit={false}
+                               onChangeText={this.updateFormField('sMacAddress')}
+                               value={this.state.sMacAddress}>
                     </TextInput>
                     <View flex={2}/>
                     <View style={styles.footerContainer}>
@@ -228,4 +235,4 @@ let styles = StyleSheet.create({
 
 });
 
-module.exports = CourseCreator;
+module.exports = StudentCreator;

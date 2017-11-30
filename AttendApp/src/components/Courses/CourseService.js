@@ -1,5 +1,5 @@
 import Realm from 'realm';
-import repository from './Repository.js';
+import repository from '../Repository.js';
 
 
 let CourseService = {
@@ -18,6 +18,7 @@ let CourseService = {
         repository.write(() => {
             // course.updatedAt = new Date();
             repository.create('Course', course);
+            course.createdAt = new Data();
         })
     },
 

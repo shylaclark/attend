@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TextInput } from 'react-native';
-import CourseModel from './CourseModel';
-import CourseService from './CourseService';
+import CourseModel from './Courses/CourseModel';
+import CourseService from './Courses/CourseService';
 import Utils from './Utils';
 
 class SearchBar extends Component {

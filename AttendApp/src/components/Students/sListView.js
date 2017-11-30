@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableHighlight} from 'react-native';
-import CourseModel from './CourseModel';
-import SearchBar from './SearchBar';
+//import SearchBar from '../SearchBar';
 import SortableListView from 'react-native-sortable-listview';
-import ListViewItem from './ListViewItem';
-import Utils from './Utils';
-import CourseService from './CourseService';
-import Header from './Header';
-import ListFooter from './ListFooter';
+//import ListViewItem from '../Courses/ListViewCourse';
+import Utils from '../Utils';
+import StudentService from './StudentService';
+//import Header from '../Header';
+//import ListFooter from '../ListFooter';
 
-let dataList = CourseService.findAll();
+let dataList = StudentService.findAll();
 var dataListOrder = getOrder(dataList);
 
 function getOrder(list) {
@@ -21,7 +20,7 @@ function moveOrderItem(listView, fromIndex, toIndex) {
     if (listView.forceUpdate) listView.forceUpdate();
 }
 
-class ListView extends Component {
+class sListView extends Component {
     constructor(props) {
         super(props);
         this.updateDataList = this.updateDataList.bind(this);
@@ -54,7 +53,7 @@ class ListView extends Component {
                     data={this.state.dataList}
                     order={dataListOrder}
                     onRowMoved={e => moveOrderItem(this, e.from, e.to)}
-                    renderRow={(dataItem, section, index) => <ListViewItem data={dataItem} navigation = {navigate} onCompletedChange={this._onCompletedChange}/>}
+                    renderRow={(dataItem, section, index) => <ListViewStudents data={dataItem} navigation = {navigate} onCompletedChange={this._onCompletedChange}/>}
                 />
             );
         }
@@ -62,12 +61,10 @@ class ListView extends Component {
         return (
 
             <View style={{flex: 1, marginLeft: 10, marginRight: 10}}>
-                <Header title={'Courses'}></Header>
                 {listView}
-                <ListFooter navigation= {navigate} nextScreen = {'CreateCourse'} title={'Create New Course'}></ListFooter>
             </View>
         )
     }
 };
 //<SearchBar data={Array.from(dataList)} updateDataList={this.updateDataList}/>
-module.exports = ListView;
+module.exports = sListView;

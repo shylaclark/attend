@@ -93,6 +93,8 @@ export default class LoginScreen extends Component {
                     <TouchableOpacity activeOpacity={.5}>
                       <View style={styles.signup}>
                           <Text style={styles.whiteFont} onPress={ ()=> navigate('Signup') }> Sign Up for AttendApp</Text>
+                          <Text style={styles.whiteFont} onPress={ ()=> navigate('CourseList') }> courseList</Text>
+
                       </View>
                     </TouchableOpacity>
                   </View>
