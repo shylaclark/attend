@@ -203,7 +203,7 @@ export default class SignupScreen extends Component {
 
                         <TouchableOpacity onPress={ () => {this.createAccount(navigate);} }>
                             <View style={styles.button}>
-                                <Text style={styles.buttonText}>Sign Up</Text>
+                                <Text style={styles.buttonText}>Submit</Text>
                             </View>
                         </TouchableOpacity>
 
