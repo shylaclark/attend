@@ -202,8 +202,8 @@ export default class SignupScreen extends Component {
                     <View style={styles.footerContainer}>
 
                         <TouchableOpacity onPress={ () => {this.createAccount(navigate);} }>
-                            <View style={styles.signup}>
-                                <Text style={styles.blackFont}>Sign Up</Text>
+                            <View style={styles.button}>
+                                <Text style={styles.buttonText}>Submit</Text>
                             </View>
                         </TouchableOpacity>
 
@@ -293,6 +293,7 @@ let styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'transparent',
+        paddingTop: 10
     },
     greyFont: {
         color: '#D8D8D8'
@@ -303,17 +304,19 @@ let styles = StyleSheet.create({
     whiteFont: {
         color: '#FFF'
     },
+
     button: {
         flexDirection: 'column',
         backgroundColor: "transparent",
         borderColor: "#8E8E8E",
         borderWidth: StyleSheet.hairlineWidth,
-        paddingHorizontal: 20,
         paddingVertical: 10,
         borderRadius: 5,
         alignItems: "center",
         justifyContent: "center",
         marginTop: 30,
+        marginLeft:20,
+        marginRight:20,
         bottom: 0
     },
     buttonText: {
