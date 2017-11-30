@@ -94,9 +94,6 @@ export default class LoginScreen extends Component {
                       <View style={styles.signup}>
                           <Text style={styles.whiteFont} onPress={ ()=> navigate('Signup') }> Sign Up for AttendApp</Text>
                       </View>
-                        <View style={styles.signup}>
-                            <Text style={styles.whiteFont} onPress={ ()=> navigate('CourseList') }> course listp</Text>
-                        </View>
                     </TouchableOpacity>
                   </View>
                 </View>
