@@ -262,7 +262,7 @@ let styles = StyleSheet.create({
         paddingVertical: 20,
     },
     inputContainer: {
-        borderWidth: 1,
+        borderWidth: StyleSheet.hairlineWidth,
         borderBottomColor: '#CCC',
         borderColor: 'transparent',
         flexDirection: 'row',
@@ -302,5 +302,23 @@ let styles = StyleSheet.create({
     },
     whiteFont: {
         color: '#FFF'
-    }
+    },
+    button: {
+        flexDirection: 'column',
+        backgroundColor: "transparent",
+        borderColor: "#8E8E8E",
+        borderWidth: StyleSheet.hairlineWidth,
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+        borderRadius: 5,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 30,
+        bottom: 0
+    },
+    buttonText: {
+        color: "#fff",
+        fontSize: 18,
+    },
+
 });

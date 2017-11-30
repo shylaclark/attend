@@ -73,57 +73,59 @@ class CourseCreator extends Component {
     render() {
         const {navigate} = this.props.navigation;
         return (
-            <View style={{flex: 1, marginLeft: 10, marginRight: 10}}>
-                <Header title={'Courses'}></Header>
-                <View style={styles.inputsContainer}>
-                        <TextInput style={{height: 36, padding: 4, marginBottom: 0, fontSize: 16, borderWidth: 1, borderColor: '#CCC', borderRadius: 8, backgroundColor: '#000', color: "#FFF"}}
-                                   placeholder='Department Code'
-                                   placeholderTextColor='#FFF'
-                                   blurOnSubmit={false}
-                                   onChangeText={this.updateFormField('courseDepartment')}
-                                   value={this.state.courseDepartment}>
-                        </TextInput>
-                        <TextInput style={{height: 36, padding: 4, marginBottom: 0, fontSize: 16, borderWidth: 1, borderColor: '#CCC', borderRadius: 8, backgroundColor: '#000', color: '#FFF'}}
-                                   placeholder='Course Number'
-                                   placeholderTextColor='#FFF'
-                                   blurOnSubmit={false}
-                                   onChangeText={this.updateFormField('courseNumber')}
-                                   value={this.state.courseNumber}>
-                        </TextInput>
-                        <TextInput style={{height: 36, padding: 4, marginBottom: 0, fontSize: 16, borderWidth: 1, borderColor: '#CCC', borderRadius: 8, backgroundColor: '#000', color: '#FFF'}}
-                                   placeholder='Course Section'
-                                   placeholderTextColor='#FFF'
-                                   blurOnSubmit={false}
-                                   onChangeText={this.updateFormField('courseSection')}
-                                   value={this.state.courseSection}>
+            <View style={styles.inputsContainer}>
+                <Header title={'Create Course'}></Header>
+                < View styl={styles.inputsContainer}>
+                    <TextInput style={[styles.inputContainer, {fontSize: 16, backgroundColor: '#000', color: "#FFF"}]}
+                               placeholder='Department Code'
+                               placeholderTextColor='#FFF'
+                               blurOnSubmit={false}
+                               onChangeText={this.updateFormField('courseDepartment')}
+                               value={this.state.courseDepartment}>
+                    </TextInput>
+                    <TextInput style={[styles.inputContainer, {fontSize: 16, backgroundColor: '#000', color: "#FFF"}]}
+                               placeholder='Course Number'
+                               placeholderTextColor='#FFF'
+                               blurOnSubmit={false}
+                               onChangeText={this.updateFormField('courseNumber')}
+                               value={this.state.courseNumber}>
+                    </TextInput>
+                    <TextInput style={[styles.inputContainer, {fontSize: 16, backgroundColor: '#000', color: "#FFF"}]}
+                               placeholder='Course Section'
+                               placeholderTextColor='#FFF'
+                               blurOnSubmit={false}
+                               onChangeText={this.updateFormField('courseSection')}
+                               value={this.state.courseSection}>
 
-                        </TextInput>
-                        <TextInput style={{height: 36, padding: 4, marginBottom: 0, fontSize: 16, borderWidth: 1, borderColor: '#CCC', borderRadius: 8, backgroundColor: '#000', color: '#FFF'}}
-                                   placeholder='Course Title'
-                                   placeholderTextColor='#FFF'
-                                   blurOnSubmit={false}
-                                   onChangeText={this.updateFormField('courseTitle')}
-                                   value={this.state.courseTitle}>
-                        </TextInput>
-                    <TouchableOpacity onPress={() => this.onKeyPress()}>
-                        <View style={styles.createcourse}>
-                            <Text style={styles.blackFont}>Create Course</Text>
-                        </View>
-                    </TouchableOpacity>
+                    </TextInput>
+                    <TextInput style={[ styles.inputContainer, {fontSize: 16, backgroundColor: '#000', color: "#FFF"}]}
+                               placeholder='Course Title'
+                               placeholderTextColor='#FFF'
+                               blurOnSubmit={false}
+                               onChangeText={this.updateFormField('courseTitle')}
+                               value={this.state.courseTitle}>
+                    </TextInput>
+                    <View flex={2}/>
+                    <View style={styles.footerContainer}>
+                        <TouchableOpacity
+                            activeOpacity={.5}
+                            style ={styles.button}
+                            onPress={() => [ this.onKeyPress(), navigate('CourseList')]}>
+                            <Text style={styles.buttonText}>Submit</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-                <ListFooter navigation= {navigate} nextScreen = {'CourseList'} title={'Finished'}></ListFooter>
             </View>
         );
     }
 }
+
 let styles = StyleSheet.create({
     container: {
         flex: 1,
     },
     bg: {
         paddingTop: 30,
-        width: null,
-        height: null
     },
     background: {
         height: '100%',
@@ -135,8 +137,12 @@ let styles = StyleSheet.create({
         flex: 1,
     },
     inputsContainer: {
-        flex: 3,
-        marginTop: 50,
+        //flex: 3,
+
+        marginTop: 10,
+        flex: 1,
+        marginLeft: 10,
+        marginRight: 10
     },
     footerContainer: {
         flex: 1
@@ -155,42 +161,31 @@ let styles = StyleSheet.create({
     },
     headerTitleView: {
         backgroundColor: 'transparent',
-        marginTop: 20,
         marginLeft: 20,
     },
     titleViewText: {
         fontSize: 40,
         color: '#fff',
     },
-    dropdownText: {
-        fontSize: 17,
-        color: '#fff',
-    },
     inputs: {
         paddingVertical: 20,
     },
     inputContainer: {
-        borderWidth: 1,
-        borderBottomColor: '#CCC',
         borderColor: 'transparent',
+        paddingBottom: 6,
         flexDirection: 'row',
-        height: 50,
+        marginVertical: 10,
+        height: 40,
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        borderBottomColor: "#CCC"
+
     },
 
-    iconContainer: {
-        paddingHorizontal: 15,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    inputIcon: {
-        width: 20,
-        height: 20,
-    },
     input: {
         flex: 1,
         paddingHorizontal: 10,
     },
-    createcourse: {
+    signup: {
         backgroundColor: '#FFF',
         paddingVertical: 10,
         alignItems: 'center',
@@ -211,6 +206,26 @@ let styles = StyleSheet.create({
     },
     whiteFont: {
         color: '#FFF'
-    }
+    },
+    button: {
+        flexDirection: 'column',
+        backgroundColor: "transparent",
+        borderColor: "#8E8E8E",
+        borderWidth: StyleSheet.hairlineWidth,
+        paddingVertical: 20,
+        borderRadius: 5,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 30,
+        marginLeft:20,
+        marginRight:20,
+        bottom: 0
+    },
+    buttonText: {
+        color: "#fff",
+        fontSize: 18,
+    },
+
 });
+
 module.exports = CourseCreator;

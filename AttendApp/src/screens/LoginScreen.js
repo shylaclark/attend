@@ -9,6 +9,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 
+
 const { width, height } = Dimensions.get("window");
 
 const background = require("../img/background.png");
@@ -22,7 +23,7 @@ const UserService = require('../components/UserService.js');
 export default class LoginScreen extends Component {
 
     state = {
-        username: '',
+        email: '',
         password: ''
     }
 
@@ -31,10 +32,10 @@ export default class LoginScreen extends Component {
     }
 
     authenticate = (navigate) => {
-        const { username, password } = this.state
+        const { email, password } = this.state
 
         let validUser = UserService.findAll().some(function(user) {
-            return user.email === username && user.password === password;
+            return user.email === email && user.password === password;
         });
 				if (validUser) {
 					navigate('CourseList');
@@ -61,9 +62,10 @@ export default class LoginScreen extends Component {
                       <Image source={personIcon} style={styles.icon} resizeMode="contain" />
                     </View>
                     <TextInput
-                        onChangeText={this.updateFormField('username')}
+                        onChangeText={this.updateFormField('email')}
                         placeholder="Username"
                         placeholderTextColor="#FFF"
+                        style={styles.input}
 
                     />
                   </View>
@@ -126,7 +128,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         marginVertical: 10,
         height: 40,
-        borderBottomWidth: 1,
+        borderBottomWidth: StyleSheet.hairlineWidth,
         borderBottomColor: "#CCC"
     },
     iconWrap: {
@@ -145,14 +147,21 @@ const styles = StyleSheet.create({
 
     },
     button: {
-        backgroundColor: "#FFF",
-        paddingVertical: 20,
+        flexDirection: 'column',
+        backgroundColor: "transparent",
+        borderColor: "#8E8E8E",
+        borderWidth: StyleSheet.hairlineWidth,
+        paddingVertical: 10,
+        borderRadius: 5,
         alignItems: "center",
         justifyContent: "center",
         marginTop: 30,
+        marginLeft:20,
+        marginRight:20,
+        bottom: 0
     },
     buttonText: {
-        color: "#000",
+        color: "#fff",
         fontSize: 18,
     },
     forgotPasswordText: {

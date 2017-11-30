@@ -88,9 +88,7 @@ export default class AttendanceSheet extends Component {
 
                     />
                 </View>
-                <View style={styles.footerContainer}>
 
-                </View>
             </Image>
         );
     }
@@ -117,13 +115,15 @@ const styles = StyleSheet.create({
         backgroundColor: "transparent",
         borderColor: "#8E8E8E",
         borderWidth: StyleSheet.hairlineWidth,
-        paddingHorizontal: 20,
-        paddingVertical: 10,
         borderRadius: 5,
         alignItems: "center",
         justifyContent: "center",
         marginTop: 30,
-        bottom: 0
+        //marginLeft:10,
+        //marginRight:10,
+        bottom: 0,
+        paddingHorizontal: '25%',
+        paddingVertical: 20,
     },
     buttonText: {
         color: "#fff",

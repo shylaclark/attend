@@ -20,9 +20,9 @@ Course.schema = {
     properties: {
         id: {type: 'string', indexed: true},
         courseDepartment: 'string',
-        courseNumber: 'int',
+        courseNumber: 'string',
         courseTitle: 'string',
-        courseSection: 'int',
+        courseSection: 'string',
         instructor: 'string',
         active: 'bool',
         createdAt: 'date',
