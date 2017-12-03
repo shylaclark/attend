@@ -1,0 +1,116 @@
+---
+format_version: '4'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: react-native
+trigger_map:
+- push_branch: "*"
+  workflow: primary
+- pull_request_source_branch: "*"
+  workflow: primary
+workflows:
+  deploy:
+    steps:
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@3.5.2: {}
+    - script@1.1.4:
+        title: Install dependencies
+    - npm@0.9.0:
+        inputs:
+        - workdir: AttendApp
+        - command: install
+    - install-missing-android-tools@2.0.2: {}
+    - gradle-runner@1.7.7:
+        inputs:
+        - gradle_file: "$GRADLE_BUILD_FILE_PATH"
+        - gradle_task: assembleRelease
+        - gradlew_path: "$GRADLEW_PATH"
+    - certificate-and-profile-installer@1.8.8: {}
+    - xcode-archive@2.3.1:
+        inputs:
+        - project_path: "$BITRISE_PROJECT_PATH"
+        - scheme: "$BITRISE_SCHEME"
+        - configuration: Release
+    - deploy-to-bitrise-io@1.3.7: {}
+  primary:
+    steps:
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@3.5.2: {}
+    - install-react-native@0.9.1: {}
+    - script@1.1.5:
+        title: Install and Link Dependencies
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # write your script here
+            npm install
+            react-native link
+
+            # or run a script from your repository, like:
+            # bash ./path/to/script.sh
+            # not just bash, e.g.:
+            # ruby ./path/to/script.rb
+        is_always_run: true
+  test-ios:
+    steps:
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@3.5.2: {}
+    - install-react-native@0.9.1:
+        is_always_run: true
+    - script@1.1.5:
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # write your script here
+            npm install
+            react-native link
+
+            # or run a script from your repository, like:
+            # bash ./path/to/script.sh
+            # not just bash, e.g.:
+            # ruby ./path/to/script.rb
+        title: Install and Link Dependencies
+        is_always_run: true
+    - script@1.1.5:
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # write your script here
+            npm test
+
+            # or run a script from your repository, like:
+            # bash ./path/to/script.sh
+            # not just bash, e.g.:
+            # ruby ./path/to/script.rb
+        title: Run Jest Tests
+app:
+  envs:
+  - opts:
+      is_expand: false
+    GRADLE_BUILD_FILE_PATH: AttendApp/android/build.gradle
+  - opts:
+      is_expand: false
+    GRADLEW_PATH: AttendApp/android/gradlew
+  - opts:
+      is_expand: false
+    BITRISE_PROJECT_PATH: AttendApp/ios/AttendApp.xcodeproj
+  - opts:
+      is_expand: false
+    BITRISE_SCHEME: AttendApp
