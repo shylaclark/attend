@@ -87,10 +87,10 @@ Shut down and restart Xcode and Simulator (iOS) or Android Studio and Emulator w
 * Build Tools: Gradle (Android), xcodebuild (iOS)
 
 ## Screenshots
-![Login](/docs/screenshots/login.png?raw=true "Login")
-![Signup](/docs/screenshots/signup.png?raw=true "Signup")
-![Create](/docs/screenshots/create-course.png?raw=true "Create Course")
-![Take](/docs/screenshots/take-attendance.png?raw=true "Take Attendance")
+![Login](/docs/screenshots/login?raw=true "Login")
+![Signup](/docs/screenshots/signup?raw=true "Signup")
+![Create](/docs/screenshots/create-course?raw=true "Create Course")
+![Take](/docs/screenshots/take-attendance?raw=true "Take Attendance")
 
 
 ## Authors
